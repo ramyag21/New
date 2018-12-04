@@ -24,8 +24,12 @@
       },
       "delete_workflow_instance": false,
       "display_name": "RG add row table ",
+      "favorite": false,
       "target": {
-        "no_target": true
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
       }
     },
     "object_type": "definition_workflow",
