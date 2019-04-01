@@ -1,0 +1,366 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_015P82RHRL41Q28rg4mLt6OrjJb16UyjP29",
+    "name": "CoreActivities",
+    "title": "CoreActivities",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "Hello",
+          "scope": "local",
+          "name": "setVariable",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_015P834JNFW3M3VIqSMqLc4wA4URvcMxLas",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 5,
+          "scope": "local",
+          "name": "Integer",
+          "type": "datatype.integer",
+          "description": "Test"
+        },
+        "unique_name": "variable_workflow_015PJ75I9K8EK1E4YvDPt2vptxoYmwY5Hh8",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "{\n\"id\": \"015LGTS\", \n\"schema_id\": \"015LG\" \n}",
+          "scope": "local",
+          "name": "JsontoXML",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_015P82WUBEH4W67wGekON81M9KOT2Omg1zQ",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "\u003cHi\u003ehello\u003c/Hi\u003e",
+          "scope": "local",
+          "name": "xmltoJSON",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_015P830O91IGE65ZfoN1HIPe6HSsS1emBJ0",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "CoreActivities",
+      "favorite": true,
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_015P83AJ4L6W92un0crNvdatiUJvRyYCu9n",
+        "name": "Calculate Date",
+        "title": "Calculate Date",
+        "type": "core.calculate_date",
+        "base_type": "activity",
+        "properties": {
+          "adjustment": 30,
+          "continue_on_failure": false,
+          "display_name": "Calculate Date",
+          "original_date": "2018-01-02T15:04:05Z"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015P83J5BI2SK6sgcrPT0QA9GNCnbu1v2YZ",
+        "name": "Calculate Date Time Difference",
+        "title": "Calculate Date Time Difference",
+        "type": "core.calculate_date_time_difference",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Calculate Date Time Difference",
+          "original_date": "2019-01-02T15:04:05Z",
+          "subtract_date": "2018-01-02T15:04:05Z"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015P83RVLCN461WRwMOmfcyYvyFdJiTBiyQ",
+        "name": "Convert Json to Xml",
+        "title": "Convert Json to Xml",
+        "type": "core.json2xml",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Convert Json to Xml",
+          "input_json": "$workflow.definition_workflow_015P82RHRL41Q28rg4mLt6OrjJb16UyjP29.local.variable_workflow_015P82WUBEH4W67wGekON81M9KOT2Omg1zQ$"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015P842OCJH754JHYy7Fu3G0mRRMv0vdDvl",
+        "name": "Convert Xml to Json",
+        "title": "Convert Xml to Json",
+        "type": "core.xml2json",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Convert Xml to Json",
+          "input_xml": "$workflow.definition_workflow_015P82RHRL41Q28rg4mLt6OrjJb16UyjP29.local.variable_workflow_015P830O91IGE65ZfoN1HIPe6HSsS1emBJ0$"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015P84DKHQD093iW9I6ha5b7GMFNbrmcDrc",
+        "name": "Escape Regex Metacharacters",
+        "title": "Escape Regex Metacharacters",
+        "type": "core.escape_regex",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Escape Regex Metacharacters",
+          "source": "asfsdf"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015P84LXSOSKL7CGEeqDunm5Te0BVUgg8qk",
+        "name": "Find String",
+        "title": "Find String",
+        "type": "core.find_string",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Find String",
+          "searched_string": "e",
+          "source": "test"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015P858CS52KU32VyoAUh9kVDKEdI24fMMh",
+        "name": "Format Date",
+        "title": "Format Date",
+        "type": "core.format_date",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Format Date",
+          "format_string": "02 Jan 06 15:04 MST",
+          "original_date": "2006-01-02T15:04:05Z",
+          "use_custom_format": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015P85H7UJFEP2JeYPvSYuYf2EtkwLiJu1c",
+        "name": "JSONPath Query",
+        "title": "JSONPath Query",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "JSONPath Query",
+          "input_json": "$workflow.definition_workflow_015P82RHRL41Q28rg4mLt6OrjJb16UyjP29.local.variable_workflow_015P82WUBEH4W67wGekON81M9KOT2Omg1zQ$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$..id",
+              "jsonpath_query_name": "id",
+              "jsonpath_query_type": "string",
+              "zdate_type_format": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015P85S2NPM3V1O9f8i98NWGYtTmqCHUARW",
+        "name": "Match Regular Expression",
+        "title": "Match Regular Expression",
+        "type": "core.matchregex",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Match Regular Expression",
+          "input_regex": ".*",
+          "input_string": "abcd"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015P860EPZG055yUlfmjFR7HqgLP5mkTOxz",
+        "name": "Parse Date",
+        "title": "Parse Date",
+        "type": "core.parse_date",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Parse Date",
+          "format_string": "02 Jan 06 15:04 MST",
+          "input_string": "02 jan 19 15:55 MST",
+          "use_custom_format": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015P869NRFMZB46WEfka9bSkpdSG7ubyG8G",
+        "name": "Replace String",
+        "title": "Replace String",
+        "type": "core.replacestring",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Replace String",
+          "input_string": "Hello how",
+          "replace_list": [
+            {
+              "replaced_string": "howHello",
+              "replacement_string": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015P86IFY62KJ0LJIubCVwcTInKaDZXoGF6",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables",
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_015P82RHRL41Q28rg4mLt6OrjJb16UyjP29.local.variable_workflow_015PJ75I9K8EK1E4YvDPt2vptxoYmwY5Hh8$",
+              "variable_value_new": 5
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015P874UTB76B6wxQVxNdBUNTPijj3Mx5iA",
+        "name": "Sleep",
+        "title": "Sleep",
+        "type": "core.sleep",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Sleep",
+          "sleep_interval": 5
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015P87DEFC8SC18wER8P4RDl4YTlY2l9EPU",
+        "name": "Split String",
+        "title": "Split String",
+        "type": "core.splitstring",
+        "base_type": "activity",
+        "properties": {
+          "boundaries": [
+            {
+              "boundary": "$"
+            }
+          ],
+          "continue_on_failure": false,
+          "display_name": "Split String",
+          "input_string": "hello$how"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015P87M2S19GI1QOmzk5EUdsQVv6Qs5FVfw",
+        "name": "Substring",
+        "title": "Substring",
+        "type": "core.substring",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Substring",
+          "source": "asdfdf"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015P87UN9W9QD3QeMxUz4zu1ptMPb4P1d0r",
+        "name": "To Lower",
+        "title": "To Lower",
+        "type": "core.string2lower",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "To Lower",
+          "source": "ABCDFG"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015P8836L8A4N6I00IbKP0yAFjEfOG25tof",
+        "name": "To Upper",
+        "title": "To Upper",
+        "type": "core.string2upper",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "To Upper",
+          "source": "abcdef"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015P88BDYQBMR5Xz9JmJ0tBCoW981puw9cT",
+        "name": "Trim String",
+        "title": "Trim String",
+        "type": "core.trim_string",
+        "base_type": "activity",
+        "properties": {
+          "characters_to_trim": "cs",
+          "continue_on_failure": false,
+          "display_name": "Trim String",
+          "source": "test dynamuics",
+          "trim_leading": true,
+          "trim_trailing": true
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015P88XRX7ZZS31iGFAGGJZF8HKEvyETDVU",
+        "name": "XPath Query",
+        "title": "XPath Query",
+        "type": "core.xpathquery",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "XPath Query",
+          "input_xml": "\u003c?xml version=\"1.0\" encoding=\"UTF-8\"?\u003e\n\u003cbookstore\u003e\n  \u003cbook\u003e\n    \u003ctitle lang=\"en\"\u003eHarry Potter\u003c/title\u003e\n    \u003cprice\u003e29.99\u003c/price\u003e\n  \u003c/book\u003e\n  \u003cbook\u003e\n    \u003ctitle lang=\"en\"\u003eLearning XML\u003c/title\u003e\n    \u003cprice\u003e39.95\u003c/price\u003e\n  \u003c/book\u003e\n\u003c/bookstore\u003e",
+          "xpath_queries": [
+            {
+              "xpath_query": "//bookstore",
+              "xpath_query_name": "id",
+              "xpath_query_type": "string"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_01FzsThUQ3yXAswxOItEqLAIiGLEPlIt0"
+    ]
+  }
+}
