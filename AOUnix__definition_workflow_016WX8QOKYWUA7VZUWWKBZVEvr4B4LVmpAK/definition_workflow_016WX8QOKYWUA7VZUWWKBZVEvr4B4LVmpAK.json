@@ -11,18 +11,6 @@
         "properties": {
           "value": 0,
           "scope": "output",
-          "name": "Final count - succeeded",
-          "type": "datatype.integer",
-          "is_required": false
-        },
-        "unique_name": "variable_workflow_0172TUALFA9871IYd9R9u8EnfQqCrLgeOIC",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.integer",
-        "properties": {
-          "value": 0,
-          "scope": "output",
           "name": "final test count - Failed",
           "type": "datatype.integer",
           "is_required": false
@@ -122,6 +110,18 @@
           "is_required": false
         },
         "unique_name": "variable_workflow_0172TLVT3B0023xSUiMe3cMjGHbDoKlp3Ap",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "output",
+          "name": "Final count - succeeded",
+          "type": "datatype.integer",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_0172TUALFA9871IYd9R9u8EnfQqCrLgeOIC",
         "object_type": "variable_workflow"
       }
     ],
@@ -275,7 +275,6 @@
                   "display_name": "Execute Cisco NEXUS Command(s)",
                   "merge_commands": false,
                   "runtime_user": {
-                    "override_target_runtime_user": false,
                     "target_default": true
                   },
                   "target": {
@@ -1264,31 +1263,6 @@
           "display_name": "Completed"
         },
         "object_type": "definition_activity"
-      },
-      {
-        "unique_name": "definition_activity_0172TVI9R7VQC5Du1pHZH9a8HK2TMd5tNjM",
-        "name": "Send Email",
-        "title": "Send Email",
-        "type": "email.smtp_send_email",
-        "base_type": "activity",
-        "properties": {
-          "action_timeout": 180,
-          "body": "Number of tests succeeded:$workflow.definition_workflow_016WX8QOKYWUA7VZUWWKBZVEvr4B4LVmpAK.output.variable_workflow_0172TUALFA9871IYd9R9u8EnfQqCrLgeOIC$\nNumber of tests failed: $workflow.definition_workflow_016WX8QOKYWUA7VZUWWKBZVEvr4B4LVmpAK.output.variable_workflow_0172TUJ8OS4842dq6jzUGekLmo8ZUBFbrTP$",
-          "continue_on_failure": false,
-          "display_name": "Send Email",
-          "from": "ramygane@tidalsoft.local",
-          "runtime_user": {
-            "override_target_runtime_user": false,
-            "target_default": true
-          },
-          "subject": "Terminal/UNIX Automation Status",
-          "target": {
-            "override_workflow_target": true,
-            "target_id": "definition_target_016T8RB0E1UQN5YZwQGhTllbYzmJNm518fZ"
-          },
-          "to": "ramygane@tidalsoft.local"
-        },
-        "object_type": "definition_activity"
       }
     ],
     "categories": [
@@ -1296,22 +1270,6 @@
     ]
   },
   "targets": {
-    "definition_target_016T8RB0E1UQN5YZwQGhTllbYzmJNm518fZ": {
-      "unique_name": "definition_target_016T8RB0E1UQN5YZwQGhTllbYzmJNm518fZ",
-      "name": "EM SMTP",
-      "title": "EM SMTP",
-      "type": "email.smtp_endpoint",
-      "base_type": "target",
-      "object_type": "definition_target",
-      "properties": {
-        "default_runtime_user_id": "definition_runtime_user_015IX7040IJ316Me76etGGL0YObhZqhwzEr",
-        "description": "SMTP",
-        "display_name": "EM SMTP",
-        "port": 25,
-        "protocol": "SMTP",
-        "server": "webmail.tidalsoft.local"
-      }
-    },
     "definition_target_016WX8OGD62GB2QL0zG9wYB4tIBHKL6yNLj": {
       "unique_name": "definition_target_016WX8OGD62GB2QL0zG9wYB4tIBHKL6yNLj",
       "name": "RG Nexus Terminal",
@@ -1320,9 +1278,9 @@
       "base_type": "target",
       "object_type": "definition_target",
       "properties": {
-        "default_runtime_user_id": "definition_runtime_user_016WXBCSZZ66W625gd8ZttuSa03voc8MKxc",
+        "default_runtime_user_id": "definition_runtime_user_016WX8IT3KOQW150cQmDDgwBlU4pm5v6q1U",
         "display_name": "RG Nexus Terminal",
-        "host": "ia-ucs-600-n-7k.tidalsoft.local",
+        "host": "sjc-cent59-rac1.tidalsoft.local",
         "port": 22,
         "protocol": "ssh"
       }
@@ -1374,19 +1332,6 @@
     }
   },
   "runtime_users": {
-    "definition_runtime_user_015IX7040IJ316Me76etGGL0YObhZqhwzEr": {
-      "unique_name": "definition_runtime_user_015IX7040IJ316Me76etGGL0YObhZqhwzEr",
-      "name": "TN - tnguyen",
-      "title": "TN - tnguyen",
-      "type": "runtime_user.email_credentials",
-      "base_type": "runtime_user",
-      "object_type": "definition_runtime_user",
-      "properties": {
-        "display_name": "TN - tnguyen",
-        "password": "*****",
-        "sender": "*****"
-      }
-    },
     "definition_runtime_user_016WX8IT3KOQW150cQmDDgwBlU4pm5v6q1U": {
       "unique_name": "definition_runtime_user_016WX8IT3KOQW150cQmDDgwBlU4pm5v6q1U",
       "name": "root",
@@ -1396,19 +1341,6 @@
       "object_type": "definition_runtime_user",
       "properties": {
         "display_name": "root",
-        "password": "*****",
-        "user": "*****"
-      }
-    },
-    "definition_runtime_user_016WXBCSZZ66W625gd8ZttuSa03voc8MKxc": {
-      "unique_name": "definition_runtime_user_016WXBCSZZ66W625gd8ZttuSa03voc8MKxc",
-      "name": "RG Nexus terminal",
-      "title": "RG Nexus terminal",
-      "type": "runtime_user.terminal_password_credentials",
-      "base_type": "runtime_user",
-      "object_type": "definition_runtime_user",
-      "properties": {
-        "display_name": "RG Nexus terminal",
         "password": "*****",
         "user": "*****"
       }
