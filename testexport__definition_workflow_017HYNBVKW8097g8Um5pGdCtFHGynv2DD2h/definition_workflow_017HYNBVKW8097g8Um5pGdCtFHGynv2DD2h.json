@@ -1,0 +1,85 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_017HYNBVKW8097g8Um5pGdCtFHGynv2DD2h",
+    "name": "abhigyan_task_approcve_flow",
+    "title": "abhigyan_task_approcve_flow",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "abhigyan_task_approcve_flow",
+      "favorite": false,
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_017I5HARBSUAG0LgxHBf70BgoUG8MGlLg4D",
+        "name": "Create Approval Request",
+        "title": "Create Approval Request",
+        "type": "task.approval_request",
+        "base_type": "activity",
+        "properties": {
+          "approval_choices": [
+            "Approve",
+            "Reject"
+          ],
+          "assignees": [
+            "$global.variable_01gqxid4jgGlfDDvAH3b5EoSsUusGw4YF.global.variable_01gqxid4jgGlfDDvAH3b5EoSsUusGw4YF$"
+          ],
+          "continue_on_failure": false,
+          "display_name": "Create Approval Request",
+          "due_date": {
+            "is_relative_time": true,
+            "is_specified_date": false,
+            "relative_time": {
+              "duration": 6,
+              "time_units": "days"
+            },
+            "set_due_date": true
+          },
+          "expiration_date": {
+            "is_relative_time": true,
+            "is_specified_date": false,
+            "relative_time": {
+              "duration": 6,
+              "time_units": "days"
+            }
+          },
+          "expiration_status": "Expired",
+          "priority": "high",
+          "subject_line": "YES",
+          "task_message": "YES",
+          "task_owner": "$workflow.definition_workflow_017HYNBVKW8097g8Um5pGdCtFHGynv2DD2h.output.instance_id$",
+          "task_requestor": "$workflow.definition_workflow_017HYNBVKW8097g8Um5pGdCtFHGynv2DD2h.output.instance_id$"
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "variables": {
+    "variable_01gqxid4jgGlfDDvAH3b5EoSsUusGw4YF": {
+      "unique_name": "variable_01gqxid4jgGlfDDvAH3b5EoSsUusGw4YF",
+      "properties": {
+        "value": "X-Auth-Token",
+        "scope": "global",
+        "name": "DNACAuthHeader",
+        "type": "datatype.string",
+        "is_required": false
+      },
+      "object_type": "variable"
+    }
+  }
+}
