@@ -1,0 +1,267 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_017T2X8SMV79E3KblFxI0pVeBdFU772qe1b",
+    "name": "Regression_ExportAll_5.1.0_vDev.61",
+    "title": "Regression_ExportAll_5.1.0_vDev.61",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "tabletype_017T7P3QZFKD05VPbbI6XatbTSe5B2OMfG2",
+        "properties": {
+          "scope": "local",
+          "name": "Workflow Table",
+          "type": "datatype.table",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_017T7PB31ROVM67qBB68WGhYUfTtvmDqRGi",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "RG git",
+          "scope": "input",
+          "name": "Input Git Repo",
+          "type": "datatype.string",
+          "is_required": true
+        },
+        "unique_name": "variable_workflow_017T328E8KFJ647FWV21fR2Ddep7LIW7KBv",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Repo ID",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_017T74P3U8MUZ3Dbc0o2eTmiauSq0wBB9gG",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Regression_ExportAll_5.1.0_vDev.61",
+      "favorite": false,
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_017T2XOGETXJU3wp62NhI0OO5slOyR8Nz6M",
+        "name": "Generic CCS API Request",
+        "title": "GET All Repos",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_call_method": "GET",
+          "continue_on_failure": false,
+          "display_name": "GET All Repos",
+          "relative_url": "be-console/api/v1/targets?is_internal=true",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017T319HZAPTJ0CMxBtFnct6yTk9cLXyrbq",
+        "name": "JSONPath Query",
+        "title": "Extract Repo ID of Input Repo",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": true,
+          "display_name": "Extract Repo ID of Input Repo",
+          "input_json": "$activity.definition_activity_017T2XOGETXJU3wp62NhI0OO5slOyR8Nz6M.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.[?(@.type == \"git.repository\" \u0026\u0026 @.name == \"$workflow.definition_workflow_017T2X8SMV79E3KblFxI0pVeBdFU772qe1b.input.variable_workflow_017T328E8KFJ647FWV21fR2Ddep7LIW7KBv$\")].id",
+              "jsonpath_query_name": "Repo ID",
+              "jsonpath_query_type": "string",
+              "zdate_type_format": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017T74JP5G0N66GEd5yhviqzvGYeTT63qfp",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables",
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_017T2X8SMV79E3KblFxI0pVeBdFU772qe1b.local.variable_workflow_017T74P3U8MUZ3Dbc0o2eTmiauSq0wBB9gG$",
+              "variable_value_new": "$activity.definition_activity_017T319HZAPTJ0CMxBtFnct6yTk9cLXyrbq.output.jsonpath_queries.Repo ID$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017T39S2W7PNC7ePae0MzPhVYCB1umtMS7d",
+        "name": "Generic CCS API Request",
+        "title": "GET all Workflows",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_call_method": "GET",
+          "continue_on_failure": false,
+          "display_name": "GET all Workflows",
+          "relative_url": "be-console/api/v1/workflows?is_atomic=false",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017T3CE08PUAO7EWz4w1zIluWW0RIl5LWxE",
+        "name": "Read Table from JSON",
+        "title": "Extract Workflow ID",
+        "type": "corejava.read_table_from_json",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Extract Workflow ID",
+          "input_json": "$activity.definition_activity_017T39S2W7PNC7ePae0MzPhVYCB1umtMS7d.output.response_body$",
+          "jsonpath_query": "$.[*]",
+          "persist_output": false,
+          "populate_columns": false,
+          "table_columns": [
+            {
+              "column_name": "id",
+              "column_type": "string",
+              "zdate_type_format": ""
+            },
+            {
+              "column_name": "name",
+              "column_type": "string",
+              "zdate_type_format": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017T7OH393X7C0NahXWW5sOwoQXNR7awY9m",
+        "name": "For Each",
+        "title": "For Each",
+        "type": "logic.for_each",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "For Each",
+          "source_array": "$activity.definition_activity_017T3CE08PUAO7EWz4w1zIluWW0RIl5LWxE.output.read_table_from_json$"
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_017T7PETNY37Q0tV1JxRnjmU9O7FykxMTnD",
+            "name": "Add Row to Table",
+            "title": "Update Workflow Table",
+            "type": "core.addrowtotable",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Update Workflow Table",
+              "input_table": "$workflow.definition_workflow_017T2X8SMV79E3KblFxI0pVeBdFU772qe1b.local.variable_workflow_017T7PB31ROVM67qBB68WGhYUfTtvmDqRGi$",
+              "row": [
+                {
+                  "key": "Workflow_ID",
+                  "type": "string",
+                  "value": "$activity.definition_activity_017T7OH393X7C0NahXWW5sOwoQXNR7awY9m.input.source_array[@].id$"
+                },
+                {
+                  "key": "Workflow_Name",
+                  "type": "string",
+                  "value": "$activity.definition_activity_017T7OH393X7C0NahXWW5sOwoQXNR7awY9m.input.source_array[@].name$"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_017T7TQJZ9J0T3xgh0iiL94OsQcqcHefCNu",
+            "name": "Generic CCS API Request",
+            "title": "Export WF to Repo",
+            "type": "ccs.api_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "api_body": "{\n  \"commit_message\": \"Commiting $activity.definition_activity_017T7OH393X7C0NahXWW5sOwoQXNR7awY9m.input.source_array[@].name$\",\n  \"file_name\": \"$activity.definition_activity_017T7OH393X7C0NahXWW5sOwoQXNR7awY9m.input.source_array[@].name$\",\n  \"force\": false,\n  \"target_id\": \"$activity.definition_activity_017T319HZAPTJ0CMxBtFnct6yTk9cLXyrbq.output.jsonpath_queries.Repo ID$\"\n}",
+              "api_call_method": "POST",
+              "continue_on_failure": false,
+              "display_name": "Export WF to Repo",
+              "relative_url": "be-importexport/api/v1/workflows/export?workflow_id=$activity.definition_activity_017T7OH393X7C0NahXWW5sOwoQXNR7awY9m.input.source_array[@].id$\u0026to=git",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+              }
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "table_types": {
+    "tabletype_017T7P3QZFKD05VPbbI6XatbTSe5B2OMfG2": {
+      "unique_name": "tabletype_017T7P3QZFKD05VPbbI6XatbTSe5B2OMfG2",
+      "data_type": "datatype.tabletype",
+      "display_name": "Workflow Table",
+      "columns": [
+        {
+          "name": "Workflow_ID",
+          "title": "Workflow_ID",
+          "type": "string"
+        },
+        {
+          "name": "Workflow_Name",
+          "title": "Workflow_Name",
+          "type": "string"
+        }
+      ],
+      "base_type": "datatype",
+      "object_type": "tabletype"
+    }
+  }
+}
