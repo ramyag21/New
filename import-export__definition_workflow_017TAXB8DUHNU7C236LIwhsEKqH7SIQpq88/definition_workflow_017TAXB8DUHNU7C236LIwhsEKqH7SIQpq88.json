@@ -1,0 +1,399 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_017TAXB8DUHNU7C236LIwhsEKqH7SIQpq88",
+    "name": "RG WF import-export",
+    "title": "RG WF import-export",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "RG WF import-export",
+      "favorite": false,
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_017U5LM8Z15KJ4Yj4cV8rRinBvlHc1Iwo4j",
+        "name": "Generic CCS API Request",
+        "title": "Generic CCS API Request",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_call_method": "GET",
+          "continue_on_failure": false,
+          "display_name": "Generic CCS API Request",
+          "relative_url": "be-console/api/v1/schemas?schema_type=view\u0026base_type=targets",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017U5N0KKPUOC7GXlu7jDWe76V5zJene6ne",
+        "name": "Completed",
+        "title": "Completed",
+        "type": "logic.completed",
+        "base_type": "activity",
+        "properties": {
+          "completion_type": "succeeded",
+          "display_name": "Completed"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017TAXC1DXLBY25EeK5AF9D86wgGQzlZh8s",
+        "name": "Generic CCS API Request",
+        "title": "GET Account keys schema",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_call_method": "GET",
+          "continue_on_failure": false,
+          "display_name": "GET Account keys schema",
+          "relative_url": "be-console/api/v1/schemas?schema_type=view\u0026base_type=runtime_user",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017TAXCGGGD7J4vQTmRI6jT8O2BuQEB12DD",
+        "name": "JSONPath Query",
+        "title": "Extract Git Account schema Id",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Extract Git Account schema Id",
+          "input_json": "$activity.definition_activity_017TAXC1DXLBY25EeK5AF9D86wgGQzlZh8s.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$..[?(@.title=='Git Password-Based Credentials')].id",
+              "jsonpath_query_name": "Extract Git Account schema id",
+              "jsonpath_query_type": "string",
+              "zdate_type_format": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017TAXCZKZGTN3XmtjNQd3p1CTgjF2bUSZj",
+        "name": "Generic CCS API Request",
+        "title": "Create Git Account Key",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_body": "{\n  \"schema_id\": \"$activity.definition_activity_017TAXCGGGD7J4vQTmRI6jT8O2BuQEB12DD.output.jsonpath_queries.Extract Git Account schema id$\",\n  \"name\": \"AM $workflow.definition_workflow_017TAXB8DUHNU7C236LIwhsEKqH7SIQpq88.output.instance_id$\",\n  \"properties\": {\n    \"display_name\": \"AM $workflow.definition_workflow_017TAXB8DUHNU7C236LIwhsEKqH7SIQpq88.output.instance_id$ \",\n    \"username\": \"ramyag21\",\n    \"password\": \"Feb2017!\"\n  }\n}",
+          "api_call_method": "POST",
+          "continue_on_failure": false,
+          "display_name": "Create Git Account Key",
+          "relative_url": "be-console/api/v1/runtime_users",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017TAXDI2C4IV7A6ZWBoR8Ts2ggs9APXFJn",
+        "name": "JSONPath Query",
+        "title": "Extract created accountkey Id",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Extract created accountkey Id",
+          "input_json": "$activity.definition_activity_017TAXCZKZGTN3XmtjNQd3p1CTgjF2bUSZj.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$..id",
+              "jsonpath_query_name": "Accountkey Id",
+              "jsonpath_query_type": "string",
+              "zdate_type_format": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017TAXDW9JOPP6zadf40Jej584OGqzMZIRP",
+        "name": "Generic CCS API Request",
+        "title": "GET Git targets",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_call_method": "GET",
+          "continue_on_failure": false,
+          "display_name": "GET Git targets",
+          "relative_url": "be-console/api/v1/targets?is_internal=true",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017TAXECZAN6E6FFHTT2CaGQWVTSXYAbubP",
+        "name": "JSONPath Query",
+        "title": "Extract GIT Schema",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Extract GIT Schema",
+          "input_json": "$activity.definition_activity_017TAXDW9JOPP6zadf40Jej584OGqzMZIRP.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.[1].schema_id",
+              "jsonpath_query_name": "Scheama ID",
+              "jsonpath_query_type": "string",
+              "zdate_type_format": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017TAXETPCG7J5FpoU9asDH8GMor4slEfje",
+        "name": "Generic CCS API Request",
+        "title": "Create GIT Target",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_body": "{\r\n  \"name\": \"AM Git Repo$activity.definition_activity_017TAXDW9JOPP6zadf40Jej584OGqzMZIRP.output.start_time$\",\r\n  \"properties\": {\r\n    \"no_runtime_user\": false,\r\n    \"repo_type\": \"github\",\r\n    \"repo_version\": \"1\",\r\n    \"branch\": \"master\",\r\n    \"display_name\": \"Automation Test Create Git Repo $activity.definition_activity_017TAXDW9JOPP6zadf40Jej584OGqzMZIRP.output.start_time$\",\r\n    \"default_runtime_user_id\": \"$activity.definition_activity_017TAXDI2C4IV7A6ZWBoR8Ts2ggs9APXFJn.output.jsonpath_queries.Accountkey Id$\",\r\n    \"protocol\": \"https\",\r\n    \"repo\": \"api.github.com/repos/ChandraAddan/Test\"\r\n  },\r\n  \"schema_id\": \"$activity.definition_activity_017TAXECZAN6E6FFHTT2CaGQWVTSXYAbubP.output.jsonpath_queries.Scheama ID$\"\r\n}",
+          "api_call_method": "POST",
+          "continue_on_failure": false,
+          "display_name": "Create GIT Target",
+          "relative_url": "/be-console/api/v1/targets",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017TAXFBN6FZU3hY17QvVVh6jBnTxTrKgZa",
+        "name": "JSONPath Query",
+        "title": "Extract created Git Target Id",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Extract created Git Target Id",
+          "input_json": "$activity.definition_activity_017TAXETPCG7J5FpoU9asDH8GMor4slEfje.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$..id",
+              "jsonpath_query_name": "target Id",
+              "jsonpath_query_type": "string",
+              "zdate_type_format": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017TAXFPDROMM7fGR9UPnEv6rZtJ5Z5jIQ6",
+        "name": "Generic CCS API Request",
+        "title": "Import Workflow",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_body": "{\r\n  \"commit_hash\": \"70a29ad2c5207753bcff46710f956cda63fa6c90\",\r\n  \"target_id\": \"$activity.definition_activity_017TAXFBN6FZU3hY17QvVVh6jBnTxTrKgZa.output.jsonpath_queries.target Id$\",\r\n  \"runtime_users\": [],\r\n  \"variables\": [],\r\n  \"file_name\": \"Import-Automation\"\r\n}",
+          "api_call_method": "POST",
+          "continue_on_failure": false,
+          "display_name": "Import Workflow",
+          "relative_url": "be-importexport/api/v1/workflows/import?create_new=true\u0026from=git\u0026overwrite=false\u0026workflow_unique_name=Import-Automation__definition_workflow_016H6ZZY00JUQ3Qv6nNMNFvHFgkblvETN8y",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017TAXG4ZL9IT7Jq4qselzfRwqBNvtdEqvN",
+        "name": "JSONPath Query",
+        "title": "Extract Worklfow Id",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Extract Worklfow Id",
+          "input_json": "$activity.definition_activity_017TAXFPDROMM7fGR9UPnEv6rZtJ5Z5jIQ6.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$..id",
+              "jsonpath_query_name": "Worklfow Id",
+              "jsonpath_query_type": "string",
+              "zdate_type_format": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017TAXGG3JFWS0RHqf8wqTFKeaNTFExNZCt",
+        "name": "Sleep",
+        "title": "Sleep",
+        "type": "core.sleep",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Sleep",
+          "sleep_interval": 5
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017TAXGQYW22J5HUE0JnGhWZodjqNBdJpTQ",
+        "name": "Generic CCS API Request",
+        "title": "Export Worklfow",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_body": "{\n  \"target_id\": \"$activity.definition_activity_017TAXFBN6FZU3hY17QvVVh6jBnTxTrKgZa.output.jsonpath_queries.target Id$\",\n  \"commit_message\": \"test01automation\",\n  \"file_name\": \"Prerelease01-export-automation-test\"\n}",
+          "api_call_method": "POST",
+          "continue_on_failure": false,
+          "display_name": "Export Worklfow",
+          "relative_url": "be-importexport/api/v1/workflows/export?force=false\u0026to=git\u0026workflow_id=$activity.definition_activity_017TAXG4ZL9IT7Jq4qselzfRwqBNvtdEqvN.output.jsonpath_queries.Worklfow Id$",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017TAXH7504IJ3DHdn3T0JYraKvMesAFKNh",
+        "name": "Generic CCS API Request",
+        "title": "Delete created Worklfow",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_call_method": "DELETE",
+          "continue_on_failure": false,
+          "display_name": "Delete created Worklfow",
+          "relative_url": "be-console/api/v1/workflows/$activity.definition_activity_017TAXG4ZL9IT7Jq4qselzfRwqBNvtdEqvN.output.jsonpath_queries.Worklfow Id$",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017TAXHNRKS2E4LoGXGMNqZ4QOJDTsZzzBK",
+        "name": "Generic CCS API Request",
+        "title": "Delete created Worklfow",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_call_method": "DELETE",
+          "continue_on_failure": false,
+          "display_name": "Delete created Worklfow",
+          "relative_url": "be-console/api/v1/targets/$activity.definition_activity_017TAXFBN6FZU3hY17QvVVh6jBnTxTrKgZa.output.jsonpath_queries.target Id$",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_017TAXI5UHJLR4WAokFuATEwAM3nVcavCBc",
+        "name": "Generic CCS API Request",
+        "title": "Deleete Git Acccount Key",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_call_method": "DELETE",
+          "continue_on_failure": false,
+          "display_name": "Deleete Git Acccount Key",
+          "relative_url": "be-console/api/v1/runtime_users/$activity.definition_activity_017TAXDI2C4IV7A6ZWBoR8Ts2ggs9APXFJn.output.jsonpath_queries.Accountkey Id$",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  }
+}
