@@ -14,9 +14,7 @@
       "display_name": "RG terminal",
       "favorite": false,
       "runtime_user": {
-        "runtime_user_id": "definition_runtime_user_016WX8IT3KOQW150cQmDDgwBlU4pm5v6q1U",
-        "override_target_runtime_user": true,
-        "runtime_user_type": "runtime_user.terminal_password_credentials"
+        "target_default": true
       },
       "target": {
         "target_type": "terminal.endpoint",
