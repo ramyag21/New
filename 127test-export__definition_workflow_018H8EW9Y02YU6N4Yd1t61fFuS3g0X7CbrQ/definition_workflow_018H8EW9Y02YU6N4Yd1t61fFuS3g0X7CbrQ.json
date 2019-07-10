@@ -1,0 +1,135 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_018H8EW9Y02YU6N4Yd1t61fFuS3g0X7CbrQ",
+    "name": "CA TASKS",
+    "title": "CA TASKS",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "CA TASKS",
+      "favorite": false,
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "target_type": "python.ansible_tower_endpoint",
+        "target_id": "definition_target_018AZ5MMIODPV5OTpk88bwo0ooXGNYLWKwI",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_018HUWQV1A7ZY3AT57L0EeA7ZaRfxl9Ez1q",
+        "name": "Create Approval Request",
+        "title": "Create Approval Request",
+        "type": "task.approval_request",
+        "base_type": "activity",
+        "properties": {
+          "approval_choices": [
+            "Approve",
+            "Reject",
+            "hold"
+          ],
+          "assignees": [
+            "caddan@cisco.com"
+          ],
+          "continue_on_failure": false,
+          "display_name": "Create Approval Request",
+          "due_date": {
+            "is_relative_time": true,
+            "is_specified_date": false,
+            "relative_time": {
+              "duration": 14,
+              "time_units": "days"
+            },
+            "set_due_date": true
+          },
+          "expiration_date": {
+            "is_relative_time": true,
+            "is_specified_date": false,
+            "relative_time": {
+              "duration": 15,
+              "time_units": "days"
+            }
+          },
+          "expiration_status": "Expired",
+          "minimum_approvals": 1,
+          "priority": "normal",
+          "subject_line": "Test Approval",
+          "task_message": "Approve ",
+          "task_owner": "caddan@cisco.com",
+          "task_requestor": "caddan@cisco.com"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_018HVBJJ7AOQJ42ikWgYnYJoI3thG5yPu1L",
+        "name": "Query Object",
+        "title": "Query Object",
+        "type": "task.query_object",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "criteria": {
+            "left_operand": "$eventtype.amqp event.input.description$",
+            "operator": "eq",
+            "right_operand": ""
+          },
+          "display_name": "Query Object",
+          "query_object": {
+            "query_event": true,
+            "event_type": "amqp.event"
+          }
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_018AZ5MMIODPV5OTpk88bwo0ooXGNYLWKwI": {
+      "unique_name": "definition_target_018AZ5MMIODPV5OTpk88bwo0ooXGNYLWKwI",
+      "name": "abcdefGit",
+      "title": "abcdefGit",
+      "type": "git.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "branch": "master",
+        "default_runtime_user_id": "definition_runtime_user_018AYP2ASNXCJ2EYpCN9PbG0KyDaYuBPOOI",
+        "display_name": "abcdefGit",
+        "no_runtime_user": false,
+        "protocol": "https",
+        "repo": "api.github.com/repos/testvikv/test_project",
+        "repo_type": "github",
+        "repo_version": "1"
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_018AYP2ASNXCJ2EYpCN9PbG0KyDaYuBPOOI": {
+      "unique_name": "definition_runtime_user_018AYP2ASNXCJ2EYpCN9PbG0KyDaYuBPOOI",
+      "name": "testGit101",
+      "title": "testGit101",
+      "type": "runtime_user.git_password_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "testGit101",
+        "password": "*****",
+        "username": "*****"
+      }
+    }
+  }
+}
