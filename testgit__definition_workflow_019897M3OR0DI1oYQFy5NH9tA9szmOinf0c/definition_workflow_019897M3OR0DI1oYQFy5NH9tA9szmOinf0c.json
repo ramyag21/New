@@ -1,0 +1,98 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_019897M3OR0DI1oYQFy5NH9tA9szmOinf0c",
+    "name": "DNAC Demo3 WF",
+    "title": "DNAC Demo3 WF",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "DNAC Demo3 WF",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_019897VURVQDR5ocZ9notyZGc2VI7x0zLCW",
+        "name": "Get Access Token",
+        "title": "Get Access Token",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": true,
+          "display_name": "Get Access Token",
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "0197ZRICBXNTI75ZG4Ulu2rEx6Pm3dssqcw",
+            "target_type": "015DULNZPRPXL75j7VwzfjmQQp6RgAHt294"
+          },
+          "workflow_id": "definition_workflow_019804MTJ0P1K6defkL64mbn5n115Oy9emQ"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01989C96BYU0L7O6Unwolyi1pQwMBPhzU9J",
+        "name": "Create Project",
+        "title": "Create Project",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": true,
+          "display_name": "Create Project",
+          "input": {
+            "variable_workflow_01989BS3PU1GQ6BAJpZ21wnKKc9EjxkNANn": "$activity.definition_activity_019897VURVQDR5ocZ9notyZGc2VI7x0zLCW.output.variable_workflow_019804N87FR284aLjReVlfbI11OCYY1xm5T$",
+            "variable_workflow_01989BS3PU5MR5NP9Jo5TqiPPIKl3yAWWWN": "{\n\"createTime\": 0,\n\"description\": \"Create Project for DNAC-2\",\n\"id\": \"0a607454-1370-4245-9229-d26f67d775f9\",\n\"lastUpdateTime\": 0,\n\"name\": \"TestDNAC2\"\n}"
+          },
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "target_type": "015DULNZPRPXL75j7VwzfjmQQp6RgAHt294",
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01989BRIJNRL44svtt1Bisf6A2K6Tk7CfKX"
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "variables": {
+    "variable_01gqxid4jgGlfDDvAH3b5EoSsUusGw4YF": {
+      "unique_name": "variable_01gqxid4jgGlfDDvAH3b5EoSsUusGw4YF",
+      "properties": {
+        "value": "X-Auth-Token",
+        "scope": "global",
+        "name": "DNACAuthHeader",
+        "type": "datatype.string",
+        "is_required": false
+      },
+      "object_type": "variable"
+    }
+  },
+  "atomic_workflows": [
+    "definition_workflow_019804MTJ0P1K6defkL64mbn5n115Oy9emQ",
+    "definition_workflow_01989BRIJNRL44svtt1Bisf6A2K6Tk7CfKX"
+  ]
+}
