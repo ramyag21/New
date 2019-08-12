@@ -1,0 +1,154 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_016DD19L6EDA37kyJJOQKYKopm8WXQeJSVQ",
+    "name": "CA HTTP",
+    "title": "CA HTTP",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "CA HTTP",
+      "favorite": false,
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      },
+      "timeout": 3600
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_016DD1G9A4MFB6wPPcphfbLeQ1QUdQRT3TL",
+        "name": "HTTP Request",
+        "title": "HTTP Request",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "display_name": "HTTP Request",
+          "method": "GET",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_015EJ2J0XVS0B3GBmrUsI6ocfwuqcOkPyFd"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_016DHO6R6II7D64SRcyz45fYdgyHpdrpRxg",
+        "name": "Parallel Block",
+        "title": "Parallel Block",
+        "type": "logic.parallel",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Parallel Block"
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_016DHO6V6C2ZA0jS0lR2NfKKMCbsFDgXzj6",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "display_name": "Parallel Branch"
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_016DHOAKW7PKX0tWUbLzQNfoM4BOHef8T9F",
+                "name": "Sleep",
+                "title": "Sleep",
+                "type": "core.sleep",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Sleep",
+                  "sleep_interval": 1
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_016DHO6WUQO1538fbSBILb8L7Xnp1XmBltC",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "display_name": "Parallel Branch"
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_016DHOIP6WL3N7QNGuCVoJCrjorIYkPc8GO",
+                "name": "JSONPath Query",
+                "title": "JSONPath Query",
+                "type": "corejava.jsonpathquery",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": false,
+                  "display_name": "JSONPath Query",
+                  "input_json": "{\n\"test\":\"test\"\n}",
+                  "jsonpath_queries": [
+                    {
+                      "jsonpath_query": "$..test",
+                      "jsonpath_query_name": "tets",
+                      "jsonpath_query_type": "string",
+                      "zdate_type_format": ""
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_015EJ2J0XVS0B3GBmrUsI6ocfwuqcOkPyFd": {
+      "unique_name": "definition_target_015EJ2J0XVS0B3GBmrUsI6ocfwuqcOkPyFd",
+      "name": "CA HTTP",
+      "title": "CA HTTP",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "description": "TEST",
+        "disable_certificate_validation": true,
+        "display_name": "CA HTTP",
+        "host": "www.google.com",
+        "no_runtime_user": true,
+        "protocol": "https",
+        "proxy_url": "http://172.21.47.2:8080"
+      }
+    }
+  }
+}
