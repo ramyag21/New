@@ -1,0 +1,89 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_018OOOBLAO5ZY0ujWGB1BzR8Fj7R6IQZblo",
+    "name": "AMQP ",
+    "title": "AMQP ",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "AMQP ",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "no_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_0190RU6IGX9031mUAYFlQqyZn4Gt0439pgj",
+        "name": " Get AMQP Message",
+        "title": " Get AMQP Message",
+        "type": "amqp.get_message",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": " Get AMQP Message",
+          "name": "prerelase-queue",
+          "noack": false,
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_019CKOCXF4YKG1on42GFcxETB6oFnSeHiGs"
+          }
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_019CKOCXF4YKG1on42GFcxETB6oFnSeHiGs": {
+      "unique_name": "definition_target_019CKOCXF4YKG1on42GFcxETB6oFnSeHiGs",
+      "name": "RG AMQP",
+      "title": "RG AMQP",
+      "type": "amqp.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_019CKO484D9XP4UWwc2dHiWg8Fd0NBVZ5Nl",
+        "display_name": "RG AMQP",
+        "host": "10.88.38.124",
+        "ignore_certificate_errors": true,
+        "port": 5672,
+        "ssl_enabled": false,
+        "vhost": "/"
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_019CKO484D9XP4UWwc2dHiWg8Fd0NBVZ5Nl": {
+      "unique_name": "definition_runtime_user_019CKO484D9XP4UWwc2dHiWg8Fd0NBVZ5Nl",
+      "name": "RG AMQP",
+      "title": "RG AMQP",
+      "type": "runtime_user.amqp_password_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "RG AMQP",
+        "password": "*****",
+        "username": "*****"
+      }
+    }
+  }
+}
