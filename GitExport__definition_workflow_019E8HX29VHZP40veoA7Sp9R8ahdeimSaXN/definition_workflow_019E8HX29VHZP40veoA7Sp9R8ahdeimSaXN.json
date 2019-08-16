@@ -5,7 +5,20 @@
     "title": "Ron Git_Export GIT",
     "type": "generic.workflow",
     "base_type": "workflow",
-    "variables": null,
+    "variables": [
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 1,
+          "scope": "local",
+          "name": "sleep counter",
+          "type": "datatype.integer",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_019E8LMMB5FQ06SCKVkpOG9R4owRqr8sfNp",
+        "object_type": "variable_workflow"
+      }
+    ],
     "properties": {
       "atomic": {
         "is_atomic": false
@@ -36,7 +49,7 @@
           "continue_on_failure": false,
           "display_name": "Sleep",
           "skip_execution": false,
-          "sleep_interval": 1
+          "sleep_interval": "$workflow.definition_workflow_019E8HX29VHZP40veoA7Sp9R8ahdeimSaXN.local.variable_workflow_019E8LMMB5FQ06SCKVkpOG9R4owRqr8sfNp$"
         },
         "object_type": "definition_activity"
       }
