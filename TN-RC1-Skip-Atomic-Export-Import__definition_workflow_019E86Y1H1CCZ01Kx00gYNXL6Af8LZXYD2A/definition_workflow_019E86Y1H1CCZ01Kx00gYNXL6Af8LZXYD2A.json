@@ -1,0 +1,639 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_019E86Y1H1CCZ01Kx00gYNXL6Af8LZXYD2A",
+    "name": "TN - Export-Import PP",
+    "title": "TN - Export-Import PP",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "tabletype_019E8B1P7U9OQ5zAqJ9EA4ouSoqlR06xz3D",
+        "properties": {
+          "scope": "local",
+          "name": "LocalTableInt",
+          "type": "datatype.table",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_019E8BIC4VK983D1Rn5c6PzQsbbtrTZEbls",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "local",
+          "name": "counter1",
+          "type": "datatype.integer",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_019E89OH97F7J22b0aB32d1IcS3pHJkVGZB",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "local",
+          "name": "counter2",
+          "type": "datatype.integer",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_019E89TNST65038Xflx0Rsu9qznBwhzgcOi",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "TN - Export-Import PP",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_019EA7L8IFHUX2pZXULCTip16XSXRBTySfw",
+        "name": "Parallel Block",
+        "title": "Parallel Block",
+        "type": "logic.parallel",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Parallel Block",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_019EA7LB6GKS3129DXmNtVi94Yjs02OxdI9",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Parallel Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_019EA7ELVNCNU5UBbJfmLze5zkLfVu7ATsA",
+                "name": "While Loop",
+                "title": "While Loop",
+                "type": "logic.while",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "While Loop",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "blocks": [
+                  {
+                    "unique_name": "definition_activity_019EA7EO3H8VP0FhqHqBNN9y2s25VSvbNPu",
+                    "name": "Condition Branch",
+                    "title": "Condition Branch",
+                    "type": "logic.condition_block",
+                    "base_type": "activity",
+                    "properties": {
+                      "condition": {
+                        "left_operand": "$workflow.definition_workflow_019E86Y1H1CCZ01Kx00gYNXL6Af8LZXYD2A.local.variable_workflow_019E89OH97F7J22b0aB32d1IcS3pHJkVGZB$",
+                        "operator": "lt",
+                        "right_operand": 5
+                      },
+                      "continue_on_failure": false,
+                      "display_name": "Condition Branch",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
+                      {
+                        "unique_name": "definition_activity_019EA6ZZ9JEUT2AstqWCFg1WvJ0hJhe9SyT",
+                        "name": "Set Variables",
+                        "title": "Set Variables",
+                        "type": "core.set_multiple_variables",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Set Variables",
+                          "skip_execution": false,
+                          "variables_to_update": [
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_019E86Y1H1CCZ01Kx00gYNXL6Af8LZXYD2A.local.variable_workflow_019E89OH97F7J22b0aB32d1IcS3pHJkVGZB$",
+                              "variable_value_new": "$workflow.definition_workflow_019E86Y1H1CCZ01Kx00gYNXL6Af8LZXYD2A.local.variable_workflow_019E89OH97F7J22b0aB32d1IcS3pHJkVGZB$+1"
+                            }
+                          ]
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_019EA9ETF6RZK68Dklmaseg0mXuedyJWAkT",
+                        "name": "Add Row to Table",
+                        "title": "Add Row to Table",
+                        "type": "core.addrowtotable",
+                        "base_type": "activity",
+                        "properties": {
+                          "action_timeout": 180,
+                          "continue_on_failure": false,
+                          "display_name": "Add Row to Table",
+                          "input_table": "$workflow.definition_workflow_019E86Y1H1CCZ01Kx00gYNXL6Af8LZXYD2A.local.variable_workflow_019E8BIC4VK983D1Rn5c6PzQsbbtrTZEbls$",
+                          "row": [
+                            {
+                              "key": "NumberN",
+                              "type": "integer",
+                              "value": "$workflow.definition_workflow_019E86Y1H1CCZ01Kx00gYNXL6Af8LZXYD2A.local.variable_workflow_019E89OH97F7J22b0aB32d1IcS3pHJkVGZB$"
+                            }
+                          ],
+                          "skip_execution": false
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_019ECVVU52PV00mIFGla9BxKGMfuft5RnoS",
+                        "name": "TN - Email Parallel",
+                        "title": "TN - Email Parallel",
+                        "type": "workflow.sub_workflow",
+                        "base_type": "subworkflow",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "TN - Email Parallel",
+                          "runtime_user": {
+                            "target_default": true
+                          },
+                          "skip_execution": true,
+                          "target": {
+                            "no_target": true
+                          },
+                          "workflow_id": "definition_workflow_019EC6MS5PLVL1P5ztVJIuSntvJIYa4Ba0m"
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_019ECZY5E6T0R6NR8gBbfmn3hFy9HL7WD5u",
+                        "name": "TN - Email Parallel",
+                        "title": "TN - Email Parallel",
+                        "type": "workflow.sub_workflow",
+                        "base_type": "subworkflow",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "TN - Email Parallel",
+                          "runtime_user": {
+                            "target_default": true
+                          },
+                          "skip_execution": false,
+                          "target": {
+                            "no_target": true
+                          },
+                          "workflow_id": "definition_workflow_019EC6MS5PLVL1P5ztVJIuSntvJIYa4Ba0m"
+                        },
+                        "object_type": "definition_activity"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_019EA7LC5XWSM2vUkpd4QZ1QwdIFtggkbcs",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Parallel Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_019EA8FWEMC2T0xDVTwQIvtJwqxbvtxdYZX",
+                "name": "While Loop",
+                "title": "While Loop",
+                "type": "logic.while",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "While Loop",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "blocks": [
+                  {
+                    "unique_name": "definition_activity_019EA8FZAVCNF3QLVWQ4459fgx90OSDK7Mh",
+                    "name": "Condition Branch",
+                    "title": "Condition Branch",
+                    "type": "logic.condition_block",
+                    "base_type": "activity",
+                    "properties": {
+                      "condition": {
+                        "left_operand": "$workflow.definition_workflow_019E86Y1H1CCZ01Kx00gYNXL6Af8LZXYD2A.local.variable_workflow_019E89TNST65038Xflx0Rsu9qznBwhzgcOi$",
+                        "operator": "lt",
+                        "right_operand": 5
+                      },
+                      "continue_on_failure": false,
+                      "display_name": "Condition Branch",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
+                      {
+                        "unique_name": "definition_activity_019EA7SNVE7I82hxL7LQ9QiHSu2UicC5OHQ",
+                        "name": "Set Variables",
+                        "title": "Set Variables",
+                        "type": "core.set_multiple_variables",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Set Variables",
+                          "skip_execution": false,
+                          "variables_to_update": [
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_019E86Y1H1CCZ01Kx00gYNXL6Af8LZXYD2A.local.variable_workflow_019E89TNST65038Xflx0Rsu9qznBwhzgcOi$",
+                              "variable_value_new": "$workflow.definition_workflow_019E86Y1H1CCZ01Kx00gYNXL6Af8LZXYD2A.local.variable_workflow_019E89TNST65038Xflx0Rsu9qznBwhzgcOi$+1"
+                            }
+                          ]
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_019ECZ6OES8HS0Ap3bhNxuongYfCGPOVIII",
+                        "name": "TN - Email Parallel",
+                        "title": "TN - Email Parallel",
+                        "type": "workflow.sub_workflow",
+                        "base_type": "subworkflow",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "TN - Email Parallel",
+                          "runtime_user": {
+                            "target_default": true
+                          },
+                          "skip_execution": true,
+                          "target": {
+                            "no_target": true
+                          },
+                          "workflow_id": "definition_workflow_019EC6MS5PLVL1P5ztVJIuSntvJIYa4Ba0m"
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_019EA9ZFQ950B0N2OpoaYHLGt88VW8zAz1Q",
+                        "name": "Add Row to Table",
+                        "title": "Add Row to Table",
+                        "type": "core.addrowtotable",
+                        "base_type": "activity",
+                        "properties": {
+                          "action_timeout": 180,
+                          "continue_on_failure": false,
+                          "display_name": "Add Row to Table",
+                          "input_table": "$workflow.definition_workflow_019E86Y1H1CCZ01Kx00gYNXL6Af8LZXYD2A.local.variable_workflow_019E8BIC4VK983D1Rn5c6PzQsbbtrTZEbls$",
+                          "row": [
+                            {
+                              "key": "NumberN",
+                              "type": "integer",
+                              "value": "$workflow.definition_workflow_019E86Y1H1CCZ01Kx00gYNXL6Af8LZXYD2A.local.variable_workflow_019E89TNST65038Xflx0Rsu9qznBwhzgcOi$"
+                            }
+                          ],
+                          "skip_execution": false
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_019EC01K9IY4V4IDPnZonUiMFceJ269M1bL",
+                        "name": "TN - Email Child Process",
+                        "title": "TN - Email Child Process",
+                        "type": "workflow.sub_workflow",
+                        "base_type": "subworkflow",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "TN - Email Child Process",
+                          "runtime_user": {
+                            "target_default": true
+                          },
+                          "skip_execution": true,
+                          "target": {
+                            "no_target": true
+                          },
+                          "workflow_id": "definition_workflow_019EBO6AYS1S12xs9bSEB9vExJyptSyzWaF"
+                        },
+                        "object_type": "definition_activity"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_019ED5IIN3OY37D3SVIufdSgCd3jNMAnsa6",
+        "name": "TN - Email Atomic Child Process",
+        "title": "TN - Email Atomic Child Process",
+        "type": "workflow.sub_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "TN - Email Atomic Child Process",
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": true,
+          "target": {
+            "no_target": true
+          },
+          "workflow_id": "definition_workflow_019EBO6AYS1S12xs9bSEB9vExJyptSyzWaF"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_019ED8550HJBS1kpv1x6m7urNLRjSD1uUUW",
+        "name": "TN - Email Atomic Child Process",
+        "title": "TN - Email Atomic Child Process",
+        "type": "workflow.sub_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "display_name": "TN - Email Atomic Child Process",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "no_target": true
+          },
+          "workflow_id": "definition_workflow_019EBO6AYS1S12xs9bSEB9vExJyptSyzWaF"
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "categories": {
+    "category_0166P5V7UMHYL2byyifYo87aYUB0K5L3rqG": {
+      "unique_name": "category_0166P5V7UMHYL2byyifYo87aYUB0K5L3rqG",
+      "name": "Public Cloud",
+      "title": "Public Cloud",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  },
+  "targets": {
+    "definition_target_019EBO2ONU91O45Qb8y6eqBQ2Z4Aq9VcIcz": {
+      "unique_name": "definition_target_019EBO2ONU91O45Qb8y6eqBQ2Z4Aq9VcIcz",
+      "name": "TN - Mail Server Hotmail",
+      "title": "TN - Mail Server Hotmail",
+      "type": "email.smtp_endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_019EB9015K2DP32Sp3fJywacWlY1rTEN5pM",
+        "display_name": "TN - Mail Server Hotmail",
+        "no_runtime_user": false,
+        "port": 587,
+        "protocol": "SMTP",
+        "server": "smtp.live.com"
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_019EB9015K2DP32Sp3fJywacWlY1rTEN5pM": {
+      "unique_name": "definition_runtime_user_019EB9015K2DP32Sp3fJywacWlY1rTEN5pM",
+      "name": "TN - EmailUser",
+      "title": "TN - EmailUser",
+      "type": "runtime_user.email_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "TN - EmailUser",
+        "password": "*****",
+        "sender": "*****"
+      }
+    }
+  },
+  "table_types": {
+    "tabletype_019E8B1P7U9OQ5zAqJ9EA4ouSoqlR06xz3D": {
+      "unique_name": "tabletype_019E8B1P7U9OQ5zAqJ9EA4ouSoqlR06xz3D",
+      "data_type": "datatype.tabletype",
+      "display_name": "TN - IntegerTable",
+      "columns": [
+        {
+          "maximum": 100000,
+          "minimum": 1,
+          "name": "NumberN",
+          "title": "NumberT",
+          "type": "integer"
+        }
+      ],
+      "base_type": "datatype",
+      "object_type": "tabletype"
+    }
+  },
+  "subworkflows": [
+    {
+      "workflow": {
+        "unique_name": "definition_workflow_019EBO6AYS1S12xs9bSEB9vExJyptSyzWaF",
+        "name": "TN - Email Atomic Child Process",
+        "title": "TN - Email Atomic Child Process",
+        "type": "generic.workflow",
+        "base_type": "workflow",
+        "variables": null,
+        "properties": {
+          "atomic": {
+            "is_atomic": false
+          },
+          "delete_workflow_instance": false,
+          "display_name": "TN - Email Atomic Child Process",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "specify_on_workflow_start": false,
+            "target_default": true
+          },
+          "target": {
+            "execute_on_target_group": false,
+            "execute_on_workflow_target": false,
+            "no_target": true,
+            "specify_on_workflow_start": false
+          }
+        },
+        "object_type": "definition_workflow",
+        "actions": [
+          {
+            "unique_name": "definition_activity_019ED4NULSP6C5rFmlTGlhw0jy9fNOC3jm0",
+            "name": "TN - Email Activity for Atomic",
+            "title": "TN - Email Activity for Atomic",
+            "type": "workflow.atomic_workflow",
+            "base_type": "subworkflow",
+            "properties": {
+              "display_name": "TN - Email Activity for Atomic",
+              "runtime_user": {
+                "target_default": true
+              },
+              "target": {
+                "no_target": true
+              },
+              "workflow_id": "definition_workflow_019ED1H0V501G2Y0AsZf9W1b1NnH2jxTLlq"
+            },
+            "object_type": "definition_activity"
+          }
+        ],
+        "categories": [
+          "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+        ]
+      }
+    },
+    {
+      "workflow": {
+        "unique_name": "definition_workflow_019EC6MS5PLVL1P5ztVJIuSntvJIYa4Ba0m",
+        "name": "TN - Email Parallel",
+        "title": "TN - Email Parallel",
+        "type": "generic.workflow",
+        "base_type": "workflow",
+        "variables": null,
+        "properties": {
+          "atomic": {
+            "is_atomic": false
+          },
+          "delete_workflow_instance": false,
+          "display_name": "TN - Email Parallel",
+          "target": {
+            "no_target": true
+          }
+        },
+        "object_type": "definition_workflow",
+        "actions": [
+          {
+            "unique_name": "definition_activity_019EC6XSG1LR02hhnH5qhbgqksuCuTOWf8X",
+            "name": "Parallel Block",
+            "title": "Parallel Block",
+            "type": "logic.parallel",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Parallel Block",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_019EC6XU9V9C13hkiTVDumJjtJeF5k3NzT8",
+                "name": "Parallel Branch",
+                "title": "Parallel Branch",
+                "type": "logic.parallel_block",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Parallel Branch",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_019ECTLYV68MM0jGlbB4MSnNhhVrxysCjX7",
+                    "name": "Sleep",
+                    "title": "Sleep",
+                    "type": "core.sleep",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Sleep",
+                      "skip_execution": false,
+                      "sleep_interval": 5
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_019EC71WPBDVL6xObIZkJLi2Ry2yFw10Ts8",
+                    "name": "Send Email",
+                    "title": "Send Email",
+                    "type": "email.smtp_send_email",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "body": "Testing Action Orchestrator",
+                      "continue_on_failure": false,
+                      "display_name": "Send Email",
+                      "from": "thang73uh@hotmail.com",
+                      "runtime_user": {
+                        "override_target_runtime_user": false,
+                        "target_default": true
+                      },
+                      "skip_execution": false,
+                      "subject": "Testing Action",
+                      "target": {
+                        "override_workflow_target": true,
+                        "target_id": "definition_target_019EBO2ONU91O45Qb8y6eqBQ2Z4Aq9VcIcz"
+                      },
+                      "to": "thang73uh@hotmail.com"
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              },
+              {
+                "unique_name": "definition_activity_019EC6XV8Q9RF7jWfu4qcyIvUYwMx1Arrjf",
+                "name": "Parallel Branch",
+                "title": "Parallel Branch",
+                "type": "logic.parallel_block",
+                "base_type": "activity",
+                "properties": {
+                  "display_name": "Parallel Branch"
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_019EC81W16SA26YJ12lLdz0hP82EkSWmm6z",
+                    "name": "Send Email",
+                    "title": "Send Email",
+                    "type": "email.smtp_send_email",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "body": "Testing Action Orchestrator",
+                      "continue_on_failure": false,
+                      "display_name": "Send Email",
+                      "from": "thang73uh@hotmail.com",
+                      "runtime_user": {
+                        "override_target_runtime_user": false,
+                        "target_default": true
+                      },
+                      "skip_execution": false,
+                      "subject": "Testing Action",
+                      "target": {
+                        "override_workflow_target": true,
+                        "target_id": "definition_target_019EBO2ONU91O45Qb8y6eqBQ2Z4Aq9VcIcz"
+                      },
+                      "to": "thang73uh@hotmail.com"
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "categories": [
+          "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+        ]
+      }
+    }
+  ],
+  "atomic_workflows": [
+    "definition_workflow_019ED1H0V501G2Y0AsZf9W1b1NnH2jxTLlq"
+  ]
+}
