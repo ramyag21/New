@@ -7,17 +7,6 @@
     "base_type": "workflow",
     "variables": [
       {
-        "schema_id": "tabletype_0190M6WDFISYV0FcyuuLw4U7EeKMK0JlaDs",
-        "properties": {
-          "scope": "local",
-          "name": "RG table11",
-          "type": "datatype.table",
-          "is_required": false
-        },
-        "unique_name": "variable_workflow_0190M773ZMPIU6deA3QKgedxznSv0gACa2l",
-        "object_type": "variable_workflow"
-      },
-      {
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
@@ -27,6 +16,17 @@
           "is_required": false
         },
         "unique_name": "variable_workflow_0190LY7SVHDJU3RbHBG11FUArLaP5JRH4oJ",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "tabletype_0190M6WDFISYV0FcyuuLw4U7EeKMK0JlaDs",
+        "properties": {
+          "scope": "local",
+          "name": "RG table11",
+          "type": "datatype.table",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_0190M773ZMPIU6deA3QKgedxznSv0gACa2l",
         "object_type": "variable_workflow"
       }
     ],
