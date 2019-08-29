@@ -1,0 +1,94 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_019P9N46LHDMO3SCLCsLRPbTkO8dOyByDnv",
+    "name": "RG cert import",
+    "title": "RG cert import",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "RG cert import",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_019P9N6HUZ5SB07uXtA7ROIpbyYpHe49YMW",
+        "name": "HTTP Request",
+        "title": "HTTP Request",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "display_name": "HTTP Request",
+          "method": "CONNECT",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_019P9N1CD5HDN1UUwew2K1zsGrD3iBMAIyZ"
+          }
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_019P9N1CD5HDN1UUwew2K1zsGrD3iBMAIyZ": {
+      "unique_name": "definition_target_019P9N1CD5HDN1UUwew2K1zsGrD3iBMAIyZ",
+      "name": "RG http cert",
+      "title": "RG http cert",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_019P9LW4TMDLA0SuI5o43dYaMcgFdFxSbKq",
+        "disable_certificate_validation": false,
+        "display_name": "RG http cert",
+        "host": "cpo-maria-01.tidalsoft.local",
+        "no_runtime_user": false,
+        "port": 51527,
+        "protocol": "http"
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_019P9LW4TMDLA0SuI5o43dYaMcgFdFxSbKq": {
+      "unique_name": "definition_runtime_user_019P9LW4TMDLA0SuI5o43dYaMcgFdFxSbKq",
+      "name": "RG cert key http",
+      "title": "RG cert key http",
+      "type": "runtime_user.web-service_client_certificate_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "crt": "*****",
+        "display_name": "RG cert key http",
+        "key": "*****",
+        "passphrase": "*****"
+      }
+    }
+  }
+}
