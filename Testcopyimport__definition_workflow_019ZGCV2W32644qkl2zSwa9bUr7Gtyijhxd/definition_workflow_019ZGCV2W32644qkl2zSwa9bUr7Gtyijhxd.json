@@ -1,0 +1,495 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_019ZGCV2W32644qkl2zSwa9bUr7Gtyijhxd",
+    "name": "RG tests",
+    "title": "RG tests",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "RG tests",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "no_target": true,
+        "execute_on_target_group": true,
+        "target_group": {
+          "target_group_id": "target_group_017DWIKMRYTMK7baBQyIW7pqgTfOz8YHhIR",
+          "run_on_all_targets": false,
+          "use_criteria": {
+            "choose_target_using_algorithm": "choose_all_with_matching_criteria",
+            "conditions": [
+              {
+                "operator": "eq",
+                "left_operand": "$targetgroup.terminal unix_linux_endpoint.input.host$",
+                "right_operand": "10.10.10.10"
+              },
+              {
+                "operator": "ne",
+                "left_operand": "$targetgroup.terminal endpoint.input.host$",
+                "right_operand": "assdfdfff"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_019ZGD1ROFJ7H7QPLRXKtNJoyRGNfhxZ1XW",
+        "name": "RG Child",
+        "title": "RG Child",
+        "type": "workflow.sub_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "display_name": "RG Child",
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "no_target": true
+          },
+          "workflow_id": "definition_workflow_017JU3BHXA8ZS69WvmEhvKL8nILN5PunsH0"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_019ZGKNW3TWOR7OnLOfsbTcTQENGzMX45dG",
+        "name": "Update Task",
+        "title": "Update Task",
+        "type": "task.update_task",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Update Task",
+          "run_as": "ramygane@cisco.com",
+          "skip_execution": false,
+          "task_id": "$activity.definition_activity_019ZGD1ROFJ7H7QPLRXKtNJoyRGNfhxZ1XW.output.error.message$",
+          "task_properties": [
+            {
+              "property_name": "approval_choices",
+              "value": [
+                "Approve"
+              ]
+            }
+          ],
+          "task_type": "task.approval"
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_015EJ2J0XVS0B3GBmrUsI6ocfwuqcOkPyFd": {
+      "unique_name": "definition_target_015EJ2J0XVS0B3GBmrUsI6ocfwuqcOkPyFd",
+      "name": "CA HTTP",
+      "title": "CA HTTP",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "description": "TEST",
+        "disable_certificate_validation": true,
+        "display_name": "CA HTTP",
+        "host": "www.google.com",
+        "ignore_proxy": false,
+        "no_runtime_user": true,
+        "protocol": "https",
+        "proxy_bypass_list": "common-framework-nginx-ingress-controller",
+        "proxy_url": "http://172.21.47.2:8080"
+      }
+    },
+    "definition_target_015L8PA95JGKL5mpLWdkFnRAi2wF2oiiyrF": {
+      "unique_name": "definition_target_015L8PA95JGKL5mpLWdkFnRAi2wF2oiiyrF",
+      "name": "lintar",
+      "title": "lintar",
+      "type": "terminal.unix_linux_endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "bash_shell": "/bin/bash",
+        "default_runtime_user_id": "definition_runtime_user_015L8K9OMT2HC6lwVyTeDQHei21naWw8iSZ",
+        "display_name": "lintar",
+        "host": "10.88.38.110",
+        "port": 22
+      }
+    },
+    "definition_target_015PNSCQY9LPX3rtFMEAjxgL5ONoC8USfTW": {
+      "unique_name": "definition_target_015PNSCQY9LPX3rtFMEAjxgL5ONoC8USfTW",
+      "name": "CA AMQP",
+      "title": "CA AMQP",
+      "type": "amqp.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_015PNRU59GG1E2dswAjyptNUGQGPNxaJI61",
+        "description": "AMQP TARGET",
+        "display_name": "CA AMQP",
+        "host": "10.88.38.124",
+        "ignore_certificate_errors": true,
+        "port": 5672,
+        "ssl_enabled": false,
+        "vhost": "/"
+      }
+    },
+    "definition_target_015WCCMLPUUZ60CKFCoJcJRhPHj4cL1Heoq": {
+      "unique_name": "definition_target_015WCCMLPUUZ60CKFCoJcJRhPHj4cL1Heoq",
+      "name": "internalKafka-noauth",
+      "title": "internalKafka-noauth",
+      "type": "kafka.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "description": "test new one 1",
+        "disable_certificate_validation": true,
+        "display_name": "internalKafka-noauth",
+        "host": "10.88.38.124",
+        "no_runtime_user": true,
+        "port": 9092,
+        "ssl_enable": false
+      }
+    },
+    "definition_target_015XC6LDFU8C22tLx7bWxuKsudyxdJdhFb2": {
+      "unique_name": "definition_target_015XC6LDFU8C22tLx7bWxuKsudyxdJdhFb2",
+      "name": "termtar",
+      "title": "termtar",
+      "type": "terminal.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_015L8K9OMT2HC6lwVyTeDQHei21naWw8iSZ",
+        "display_name": "termtar",
+        "host": "10.88.38.110",
+        "port": 22,
+        "protocol": "ssh"
+      }
+    },
+    "definition_target_016CLQXJ8MA3I2ClDZDpoGf6WN58ocdtTWU": {
+      "unique_name": "definition_target_016CLQXJ8MA3I2ClDZDpoGf6WN58ocdtTWU",
+      "name": "CA UNIX",
+      "title": "CA UNIX",
+      "type": "terminal.unix_linux_endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "bash_shell": "/bin/bash",
+        "default_runtime_user_id": "definition_runtime_user_017DW9ZONVSGK2pJY6tdKhjP9si3soNiWOH",
+        "display_name": "CA UNIX",
+        "host": "sjc-cent59-rac1.tidalsoft.local",
+        "port": 22
+      }
+    },
+    "definition_target_017DWCJ647R1C58Vz7tSOz8ZiB57K56rGbm": {
+      "unique_name": "definition_target_017DWCJ647R1C58Vz7tSOz8ZiB57K56rGbm",
+      "name": "CA Terminal ",
+      "title": "CA Terminal ",
+      "type": "terminal.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_017DW9ZONVSGK2pJY6tdKhjP9si3soNiWOH",
+        "display_name": "CA Terminal ",
+        "host": "10.88.38.124",
+        "port": 22,
+        "protocol": "ssh"
+      }
+    },
+    "definition_target_01FYQNgGmYITy6s2yFwaxWBdBGc9YAtm9": {
+      "unique_name": "definition_target_01FYQNgGmYITy6s2yFwaxWBdBGc9YAtm9",
+      "name": "TN - Oracle",
+      "title": "TN - Oracle",
+      "type": "corejava.jdbc_endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "database": "cpo",
+        "dbtype": "oracle",
+        "default_runtime_user_id": "definition_runtime_user_01FYQLisAOSTF9pRGzSudCw4njAHwgfMk",
+        "display_name": "TN - Oracle",
+        "port": 1521,
+        "server": "cpo-w2012-81.tidalsoft.local"
+      }
+    },
+    "definition_target_01GL3E0xdaYZXuqMRV4Hh7u3Q0xvhcQBc": {
+      "unique_name": "definition_target_01GL3E0xdaYZXuqMRV4Hh7u3Q0xvhcQBc",
+      "name": " vCenter Server - aus-65esxvc-01 ",
+      "title": " vCenter Server - aus-65esxvc-01 ",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_01GL392jsVQARIRHOoEdfDPzDJzzwh12H",
+        "disable_certificate_validation": true,
+        "display_name": " vCenter Server - aus-65esxvc-01 ",
+        "host": "10.88.102.41",
+        "no_runtime_user": false,
+        "protocol": "https"
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_015L8K9OMT2HC6lwVyTeDQHei21naWw8iSZ": {
+      "unique_name": "definition_runtime_user_015L8K9OMT2HC6lwVyTeDQHei21naWw8iSZ",
+      "name": "linuser",
+      "title": "linuser",
+      "type": "runtime_user.terminal_password_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "linuser",
+        "password": "*****",
+        "user": "*****"
+      }
+    },
+    "definition_runtime_user_015PNRU59GG1E2dswAjyptNUGQGPNxaJI61": {
+      "unique_name": "definition_runtime_user_015PNRU59GG1E2dswAjyptNUGQGPNxaJI61",
+      "name": "CA AMQP Keys",
+      "title": "CA AMQP Keys",
+      "type": "runtime_user.amqp_password_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "CA AMQP Keys",
+        "password": "*****",
+        "username": "*****"
+      }
+    },
+    "definition_runtime_user_017DW9ZONVSGK2pJY6tdKhjP9si3soNiWOH": {
+      "unique_name": "definition_runtime_user_017DW9ZONVSGK2pJY6tdKhjP9si3soNiWOH",
+      "name": "CA Terminal",
+      "title": "CA Terminal",
+      "type": "runtime_user.terminal_password_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "CA Terminal",
+        "password": "*****",
+        "user": "*****"
+      }
+    },
+    "definition_runtime_user_01FYQLisAOSTF9pRGzSudCw4njAHwgfMk": {
+      "unique_name": "definition_runtime_user_01FYQLisAOSTF9pRGzSudCw4njAHwgfMk",
+      "name": "TN - system",
+      "title": "TN - system",
+      "type": "runtime_user.database_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "TN - system",
+        "password": "*****",
+        "username": "*****"
+      }
+    },
+    "definition_runtime_user_01GL392jsVQARIRHOoEdfDPzDJzzwh12H": {
+      "unique_name": "definition_runtime_user_01GL392jsVQARIRHOoEdfDPzDJzzwh12H",
+      "name": "aus-65esxvc-01 user",
+      "title": "aus-65esxvc-01 user",
+      "type": "runtime_user.web-service_basic_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "basic_password": "*****",
+        "basic_username": "*****",
+        "display_name": "aus-65esxvc-01 user"
+      }
+    }
+  },
+  "target_groups": {
+    "target_group_0167EXDLOWCEQ6GBYO0TGF5xrpWNb86KqfU": {
+      "unique_name": "target_group_0167EXDLOWCEQ6GBYO0TGF5xrpWNb86KqfU",
+      "name": "CA TARGET GROUPS",
+      "title": "CA TARGET GROUPS",
+      "type": "generic.target_group",
+      "base_type": "target_group",
+      "version": "1.0.0",
+      "targets": [
+        {
+          "data_target_type": "web-service.endpoint",
+          "view_target_type": "web-service.endpoint",
+          "include_all_targets": false,
+          "selected_target_ids": [
+            "definition_target_015EJ2J0XVS0B3GBmrUsI6ocfwuqcOkPyFd"
+          ]
+        },
+        {
+          "data_target_type": "kafka.endpoint",
+          "view_target_type": "kafka.endpoint",
+          "include_all_targets": false,
+          "selected_target_ids": [
+            "definition_target_015WCCMLPUUZ60CKFCoJcJRhPHj4cL1Heoq"
+          ]
+        },
+        {
+          "data_target_type": "amqp.endpoint",
+          "view_target_type": "amqp.endpoint",
+          "include_all_targets": false,
+          "selected_target_ids": [
+            "definition_target_015PNSCQY9LPX3rtFMEAjxgL5ONoC8USfTW"
+          ]
+        },
+        {
+          "data_target_type": "terminal.unix_linux_endpoint",
+          "view_target_type": "terminal.unix_linux_endpoint",
+          "include_all_targets": false,
+          "selected_target_ids": [
+            "definition_target_015L8PA95JGKL5mpLWdkFnRAi2wF2oiiyrF"
+          ]
+        },
+        {
+          "data_target_type": "terminal.endpoint",
+          "view_target_type": "terminal.endpoint",
+          "include_all_targets": false,
+          "selected_target_ids": [
+            "definition_target_015XC6LDFU8C22tLx7bWxuKsudyxdJdhFb2"
+          ]
+        },
+        {
+          "data_target_type": "ccsuite.integration_endpoint",
+          "view_target_type": "ccsuite.integration_endpoint",
+          "include_all_targets": false,
+          "selected_target_ids": [
+            "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          ]
+        },
+        {
+          "data_target_type": "corejava.jdbc_endpoint",
+          "view_target_type": "corejava.jdbc_endpoint",
+          "include_all_targets": false,
+          "selected_target_ids": [
+            "definition_target_01FYQNgGmYITy6s2yFwaxWBdBGc9YAtm9"
+          ]
+        }
+      ],
+      "object_type": "target_group"
+    },
+    "target_group_017DWIKMRYTMK7baBQyIW7pqgTfOz8YHhIR": {
+      "unique_name": "target_group_017DWIKMRYTMK7baBQyIW7pqgTfOz8YHhIR",
+      "name": "CA UNIX TERMINAL",
+      "title": "CA UNIX TERMINAL",
+      "type": "generic.target_group",
+      "base_type": "target_group",
+      "version": "1.0.0",
+      "targets": [
+        {
+          "data_target_type": "terminal.unix_linux_endpoint",
+          "view_target_type": "terminal.unix_linux_endpoint",
+          "include_all_targets": false,
+          "selected_target_ids": [
+            "definition_target_016CLQXJ8MA3I2ClDZDpoGf6WN58ocdtTWU"
+          ]
+        },
+        {
+          "data_target_type": "terminal.endpoint",
+          "view_target_type": "terminal.endpoint",
+          "include_all_targets": false,
+          "selected_target_ids": [
+            "definition_target_017DWCJ647R1C58Vz7tSOz8ZiB57K56rGbm"
+          ]
+        }
+      ],
+      "object_type": "target_group"
+    }
+  },
+  "subworkflows": [
+    {
+      "workflow": {
+        "unique_name": "definition_workflow_017JU3BHXA8ZS69WvmEhvKL8nILN5PunsH0",
+        "name": "RG Child",
+        "title": "RG Child",
+        "type": "generic.workflow",
+        "base_type": "workflow",
+        "variables": null,
+        "properties": {
+          "atomic": {
+            "is_atomic": false
+          },
+          "delete_workflow_instance": false,
+          "display_name": "RG Child",
+          "favorite": false,
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "specify_on_workflow_start": false,
+            "target_default": true
+          },
+          "target": {
+            "no_target": true,
+            "execute_on_target_group": true,
+            "target_group": {
+              "target_group_id": "target_group_0167EXDLOWCEQ6GBYO0TGF5xrpWNb86KqfU",
+              "run_on_all_targets": false,
+              "selected_target_types": [
+                "amqp.endpoint"
+              ],
+              "use_criteria": {
+                "choose_target_using_algorithm": "choose_first_with_matching_criteria",
+                "conditions": [
+                  {
+                    "operator": "eqi",
+                    "left_operand": "$targetgroup.target_group_0167EXDLOWCEQ6GBYO0TGF5xrpWNb86KqfU.common.description$",
+                    "right_operand": "Treue"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "object_type": "definition_workflow",
+        "actions": [
+          {
+            "unique_name": "definition_activity_017JU5Z5M11H86D6UDIoPt2fNzKsKPBkQLF",
+            "name": "HTTP Request",
+            "title": "HTTP Request",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "display_name": "HTTP Request",
+              "method": "GET",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01GL3E0xdaYZXuqMRV4Hh7u3Q0xvhcQBc"
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_019ZGG2KXXZZ83TPnK6NTAJRLLaGfA3Qs0Z",
+            "name": "Sleep",
+            "title": "Sleep",
+            "type": "core.sleep",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Sleep",
+              "skip_execution": false,
+              "sleep_interval": 60
+            },
+            "object_type": "definition_activity"
+          }
+        ],
+        "categories": [
+          "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+        ]
+      }
+    }
+  ]
+}
