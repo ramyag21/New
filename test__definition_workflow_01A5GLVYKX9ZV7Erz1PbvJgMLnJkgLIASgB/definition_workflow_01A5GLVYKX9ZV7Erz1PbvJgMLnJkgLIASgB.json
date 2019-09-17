@@ -36,6 +36,7 @@
         "is_atomic": false
       },
       "delete_workflow_instance": false,
+      "description": "test ",
       "display_name": "RG secure string",
       "runtime_user": {
         "override_target_runtime_user": false,
@@ -88,6 +89,20 @@
             "override_workflow_target": true,
             "target_id": "definition_target_01A5GL8XCYYDU3tq8NtjexrASAz5O1OlEcn"
           }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01A5J2T64LDDS3RcoJMsDaSUo8FQ3285VDN",
+        "name": "Sleep",
+        "title": "Sleep",
+        "type": "core.sleep",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Sleep",
+          "skip_execution": false,
+          "sleep_interval": 1
         },
         "object_type": "definition_activity"
       }
