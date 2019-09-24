@@ -1,0 +1,130 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_019DHESX7NKI94jgEflODu2guzOg4Zxuccw",
+    "name": "Child",
+    "title": "Child",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "019CLLDZMFT7O78Ly3ZPoFgyGWXO4IheBZC",
+          "scope": "local",
+          "name": "Event ID",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_019DJRGU2IBJ21dnjnqDgVhDmN8eV0E0OSo",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Child",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "target_type": "web-service.endpoint",
+        "target_id": "definition_target_0161GYC5FLVBC6DWFAt4Y1P87RXVioMCZMd",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_019DJZE59ZC4P7kGJfxqY74IbrLSVn3eVPb",
+        "name": "Get Access Token",
+        "title": "Get Access Token",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get Access Token",
+          "input": {
+            "variable_workflow_015DF6RI1OJCI74vgWSV6iVDd9yi2P9iad8": "ramygane",
+            "variable_workflow_015DF77HNPK5S2ZFV78fLcqrfeaUsyMfGv5": "Default",
+            "variable_workflow_015DFE4QAJTXD1z7MlMx1bcerHSuyvnwrUI": "*****",
+            "variable_workflow_0186ODBTP1KK4351HZxTIvzeIbgAUExsDlf": "Default"
+          },
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "015I31SRDVZDF5igqB9fEcQ33gZHdTjwRZP",
+            "target_type": "015DULNZPRPXL75j7VwzfjmQQp6RgAHt294"
+          },
+          "workflow_id": "definition_workflow_015DF5MXFPWRY3lfm5HPZIo5dE0rjFTSb8n"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_019DJQPTXY7AJ1QIUxIka0CaKa2tltts71u",
+        "name": "Wait For Event",
+        "title": "Wait For Event",
+        "type": "task.wait_for_event",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Wait For Event",
+          "event_info": {
+            "add_event": false,
+            "existing_event_info": {
+              "event_id": "$workflow.definition_workflow_019DHESX7NKI94jgEflODu2guzOg4Zxuccw.local.variable_workflow_019DJRGU2IBJ21dnjnqDgVhDmN8eV0E0OSo$",
+              "override_event_criteria": false
+            },
+            "use_existing_event": true
+          },
+          "event_type": "approval_task.event",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_019DHEZ053JA44FPFArjkjT7NRi5LaYTz13",
+        "name": "Completed",
+        "title": "Completed",
+        "type": "logic.completed",
+        "base_type": "activity",
+        "properties": {
+          "completion_type": "succeeded",
+          "continue_on_failure": false,
+          "display_name": "Completed",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_0161GYC5FLVBC6DWFAt4Y1P87RXVioMCZMd": {
+      "unique_name": "definition_target_0161GYC5FLVBC6DWFAt4Y1P87RXVioMCZMd",
+      "name": "RG google target",
+      "title": "RG google target",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": false,
+        "display_name": "RG google target",
+        "host": "google.com",
+        "no_runtime_user": true,
+        "protocol": "http"
+      }
+    }
+  },
+  "atomic_workflows": [
+    "definition_workflow_015DF5MXFPWRY3lfm5HPZIo5dE0rjFTSb8n"
+  ]
+}
