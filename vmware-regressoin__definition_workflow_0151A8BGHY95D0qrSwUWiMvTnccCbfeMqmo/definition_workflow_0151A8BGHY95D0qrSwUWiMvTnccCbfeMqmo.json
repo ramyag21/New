@@ -1,0 +1,777 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_0151A8BGHY95D0qrSwUWiMvTnccCbfeMqmo",
+    "name": "Balaji - VMware Demo",
+    "title": "Balaji - VMware Demo",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "description": "VMWare Demo Workflow",
+      "display_name": "Balaji - VMware Demo",
+      "favorite": false,
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "target_type": "web-service.endpoint",
+        "specify_on_workflow_start": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_0151BEW3HWMSN0FSkvZERAPqFFKthjKxe6x",
+        "name": "Get Folders",
+        "title": "Get Folders",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get Folders",
+          "input": {},
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01GOrDWL4ca4vzB93QOnGxiE7ehrxCJHJ"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151A8N4B3EJK0vkmO1WdclPxBCmjh8DKs2",
+        "name": "Create DataCenter",
+        "title": "Create DataCenter",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Create DataCenter",
+          "input": {
+            "variable_workflow_0150WA545X35Q3DcbNKMlRI51d6mGpApSZH": "group-d1",
+            "variable_workflow_0150WA545XNZ66BtT5eO2HFip3Uy1EXW1qJ": "TestDemoDatacenter1"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_0150WA232HOAN2dVfYJFpxzAMh3dI72VDgp"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151A8PJ5X4ED3vdK4MzakpVTmY9Eouhiz3",
+        "name": "Create Virtual Machine",
+        "title": "Create Virtual Machine",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Create Virtual Machine",
+          "input": {
+            "variable_workflow_0150P67V6C0V63skwS6RLvtG0s0zDuyYXV6": "WINDOWS_7_SERVER_64",
+            "variable_workflow_0150P67V6CCFS4SIajMkJed0UDVlMalzwXV": "datastore-31",
+            "variable_workflow_0150P67V6CKEK6z6WRCmsnFzeOn5EZb3pFh": "New Disk Drive",
+            "variable_workflow_0150P67V6COAB2lAVIZ4o3VYIg5f49wDQYP": 4096,
+            "variable_workflow_0150P67V6D00Z3EKKDiBxK58CE6dekzfWeS": 1,
+            "variable_workflow_0150P67V6D7Q81iKvQLvEHduKesNZwpEHfE": "42949672960",
+            "variable_workflow_0150P67V6DFHL3y5LpPobsVsSyy4esnVCDb": "host-25",
+            "variable_workflow_0150P67V6DN4H1YsLuCuCmam5wj8TSDK3qX": "E1000",
+            "variable_workflow_0150P67V6DQZ45wGsFm2ZN0j0QLzO31p739": "network-27",
+            "variable_workflow_0150P67V6DYM07KJuu0cGYHPnMbVCH6wzLw": "domain-c22",
+            "variable_workflow_0150P67V6E2G92cevYYWvysteqWMWy63fXC": "DemoVM",
+            "variable_workflow_0150P67V6E6BC2HbcDhJmGMkC0TRniQ8d3V": "STANDARD_PORTGROUP",
+            "variable_workflow_0150P67V6EA5T5y50IRTGuIZ9waz2jiZesF": "group-v18",
+            "variable_workflow_0150P67V6EHUA555anco0EyPfzdPrjq0icS": "GENERATED"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_0150P61S39AO519wiQDzUucyRzO4TMVJalc"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151A8VMOE3VH6AtigHkkEPEUUApuQLlYgN",
+        "name": "Add vCPU to Virtual Machine",
+        "title": "Add vCPU to Virtual Machine",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Add vCPU to Virtual Machine",
+          "input": {
+            "variable_workflow_0150P0TMRCQLD2VKKn6STL9RYqRg6Y4yWBW": 4,
+            "variable_workflow_0150P0TMRCXRQ2yrPrkLfSdQu8O2bhyN90P": "$activity.definition_activity_0151A8PJ5X4ED3vdK4MzakpVTmY9Eouhiz3.output.variable_workflow_0150P67V6CW5061m81PEWC2fGmWOeQH56xw$"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_0150P0PNFY7EA5MCfhN20MP6R2lEpRdGzNh"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151AFG56NLCG3Iw9kmt7RwpxGvZcU7XmPY",
+        "name": "Add vDisk to Virtual Machine",
+        "title": "Add vDisk to Virtual Machine",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Add vDisk to Virtual Machine",
+          "input": {
+            "variable_workflow_0151DOQKJ3YZB2WhuK9RFDJPkvYZFWW4EIL": "42949672960",
+            "variable_workflow_01GuiAnm5RxqjwE05zE4kGQixUFMWBXCS": "$activity.definition_activity_0151A8PJ5X4ED3vdK4MzakpVTmY9Eouhiz3.output.variable_workflow_0150P67V6CW5061m81PEWC2fGmWOeQH56xw$"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01Gui2zLmfxX1dTqVhdtRofkKL7c8NxTz"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151DFC7K4EX96DZkEpOwbIv4xJoHYbqhpX",
+        "name": "Add vNic to Virtual Machine",
+        "title": "Add vNic to Virtual Machine",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Add vNic to Virtual Machine",
+          "input": {
+            "variable_workflow_01GWDvkk8dE0Sm1IA6JvqSilprsRfrKaT": "$activity.definition_activity_0151A8PJ5X4ED3vdK4MzakpVTmY9Eouhiz3.output.variable_workflow_0150P67V6CW5061m81PEWC2fGmWOeQH56xw$",
+            "variable_workflow_01GWcgnB2qxOayNQ2J3I3FE2ciAPdjUBZ": "network-27",
+            "variable_workflow_01GZPkQXO4J79lqQmtLN1OF7UCN8fW19L": "STANDARD_PORTGROUP"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01GRTqSBXz95hxsxUDbRgP1ZQUPaFMMF2"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151A9FFOBF612JM7BRO1aV9m4HdkCc012C",
+        "name": "Update Virtual Machine Memory",
+        "title": "Update Virtual Machine Memory",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Update Virtual Machine Memory",
+          "input": {
+            "variable_workflow_0150Q9CLGKULD1WIdoLQARlK71wNLfbew2v": "$activity.definition_activity_0151A8PJ5X4ED3vdK4MzakpVTmY9Eouhiz3.output.variable_workflow_0150P67V6CW5061m81PEWC2fGmWOeQH56xw$",
+            "variable_workflow_0150Q9CLGL1WA6UU2OSqoUsCw6cMGSA5UDm": 6144
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_0150Q99CYU17F35ZphAuqekGaUPWC6jrTB1"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151A9CFR3JFT1x9PI7www0sGL8ox0YkWT3",
+        "name": "Manage Virtual Machine Power State",
+        "title": "Manage Virtual Machine Power State",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Manage Virtual Machine Power State",
+          "input": {
+            "variable_workflow_0150P7QSPE09379mX2AsyIngprvWHb9qJfp": "stop",
+            "variable_workflow_0150P7QSPE7HB6qF64WWljstbTsIyzPdwQT": "$activity.definition_activity_0151A8PJ5X4ED3vdK4MzakpVTmY9Eouhiz3.output.variable_workflow_0150P67V6CW5061m81PEWC2fGmWOeQH56xw$"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_0150P7MX7CCIZ1DRWtdPVuR0Og6luHiUf9H"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151CQZAIMY2J5kL47M5jWAWSyeoeHhxIBK",
+        "name": "Disconnect Host from vCenter",
+        "title": "Disconnect Host from vCenter",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Disconnect Host from vCenter",
+          "input": {
+            "variable_workflow_0150QD5KJPDE30GV4tsHlUTc49hIWPR33bN": "host-25"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_0150QD2DL1C2V1TW0QrqztNZURL4QbQJFVw"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151A9575D32Q2TFhW8TNSzvOjDoiFmlRVH",
+        "name": "Connect Host to vCenter",
+        "title": "Connect Host to vCenter",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Connect Host to vCenter",
+          "input": {
+            "variable_workflow_01GpqcW0blejFJwfDcGzRrQ6w1xorJl08": "host-25"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01GpQDYDdvFrLERruRkNRwgmf7nzayVVp"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151A9VOVLPJR66VevTRbKptbU8jkpBJtiA",
+        "name": "Get Clusters",
+        "title": "Get Clusters",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get Clusters",
+          "input": {
+            "variable_workflow_01GOKEoBparNiETkZa2oK5uVDsXr9RWTm": "$activity.definition_activity_0151A8N4B3EJK0vkmO1WdclPxBCmjh8DKs2.output.variable_workflow_0150WA545XUMT2i4u9KoFcSlj2LeZZ3FrhD$"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01GOiO0HL6RFRyDMTpNMy09wJEVNWLQcS"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151A9T5UNGHQ3QWXtxK5Ln1DDrzqNR5NDL",
+        "name": "Get Cluster Details",
+        "title": "Get Cluster Details",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get Cluster Details",
+          "input": {
+            "variable_workflow_01GOMAvQut0LKD5wco3qupOdCjqu9cNty": "domain-c22"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01GOM2W92fh6RWB6pdoZgQL5rJxVbsDJb"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151AA0GYFZ7T1aEvr0hSHwX9rGqPH5NJrz",
+        "name": "Get Datacenters",
+        "title": "Get Datacenters",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get Datacenters",
+          "input": {},
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01GOkkEwiVeIiwsx6nCWR0X1SI3X8J770"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151A9Y6KMVTF6Vb7Xe7THvJ6PAYfocCEF3",
+        "name": "Get Datacenter Details",
+        "title": "Get Datacenter Details",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get Datacenter Details",
+          "input": {
+            "variable_workflow_0150QG25LT6G00jKErlv27ck7rN11XxWuZU": "$activity.definition_activity_0151AA0GYFZ7T1aEvr0hSHwX9rGqPH5NJrz.output.variable_workflow_01GOL0uQwRvVZzOyEpqBnL19yeKk2VJLL[0].Id$"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_0150QFYX7NZ614mUJ9On8q36EmnByEmcmCb"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151AA7J8KWBL38xrIAxDtvwMbJURUrgemv",
+        "name": "Get Datastores",
+        "title": "Get Datastores",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get Datastores",
+          "input": {
+            "variable_workflow_01GywGhiLJrwt8jN1kwRd2GwoAkYkCPDy": "$activity.definition_activity_0151A8N4B3EJK0vkmO1WdclPxBCmjh8DKs2.output.variable_workflow_0150WA545XUMT2i4u9KoFcSlj2LeZZ3FrhD$"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01GOVMpZRZSYKsPyfUyAGUxeplhkxtAYo"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151AA2R5OEXI0QaLev7f0EkzQMlDdWhT6a",
+        "name": "Get Datastore Details",
+        "title": "Get Datastore Details",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get Datastore Details",
+          "input": {
+            "variable_workflow_01GyWTZjPanYMvIyfyChLMA9eYCPti9ig": "datastore-31"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01GOXjuErgw3fXYwvsV9tdVTyAqidCetg"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151AAEBAJJEE0JeRLUUnDY7wa3HIJc0FFa",
+        "name": "Get Hosts",
+        "title": "Get Hosts",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get Hosts",
+          "input": {
+            "variable_workflow_01GyyDHTh2HQShhy1jEDmks4svJsiKXVe": "domain-c22"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01GOtKsjtsLIpP4u0n6AWhNS9Emak5nW0"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151AAH0QGZHT3SxF8aE0l3cDfMorlbUHjC",
+        "name": "Get Port Groups",
+        "title": "Get Port Groups",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get Port Groups",
+          "input": {
+            "variable_workflow_01GyxHqv3xk4m6TemvTJ5Nay14bZoGdRr": "datacenter-17"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01GR60D9AqKG0vrOpTNN9fDrzYkDqm3pC"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151AAMPES0WV3KW6EP1lWxaiTdbjib0WH7",
+        "name": "Get Resource Pools",
+        "title": "Get Resource Pools",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get Resource Pools",
+          "input": {},
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01GOYBDb5n0CmWEOFR5nDEOCHgNN4t2Yb"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151AAJK6RDFU0J0z9IUBTUUthQK2usWJEN",
+        "name": "Get Resource Pool Details",
+        "title": "Get Resource Pool Details",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get Resource Pool Details",
+          "input": {
+            "variable_workflow_01Go5BgJdAVFucGiRNiVtXwAE6vluj93H": "resgroup-23"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01Go0MEMDodU27yG70Lx41VrmY1zSmIey"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151AAPW1BO4W0E7xBeFkQqDmO0mKCg4Y6W",
+        "name": "Get Virtual Machine Details",
+        "title": "Get Virtual Machine Details",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get Virtual Machine Details",
+          "input": {
+            "variable_workflow_01GuhtfX3IasITL3DtBGFdOiTaqLJV2Ns": "vm-55"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01GuhNtD2Gmd8Yk3XCiPkdVOkbH3Nh6qr"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151AASMAYKD87OC2B5PF5OuPDu0PEjsSAv",
+        "name": "Get Virtual Machine Power state",
+        "title": "Get Virtual Machine Power state",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get Virtual Machine Power state",
+          "input": {
+            "variable_workflow_01GRJLcx27xDz4eTzrZm0jhf6Vu6HxcsZ": "vm-55"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01GRJ5Yr2xP1lD8RzFjpKbGgz7FKdmP2i"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151AAV0QOWQB615VKJ2ahfsdG4jsivS4wX",
+        "name": "Get Virtual Machine vDisks",
+        "title": "Get Virtual Machine vDisks",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get Virtual Machine vDisks",
+          "input": {
+            "variable_workflow_01GpTm3tjjZ1cJSCMRdqw0uaWGF7aB2Nv": "vm-55"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01GpTERVsadmxIjDV3IB5ZxjYyj5Iarkq"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151AAXPYI4TT1UgdEq4KV2gqyAV4w2HynL",
+        "name": "Get Virtual Machines",
+        "title": "Get Virtual Machines",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get Virtual Machines",
+          "input": {
+            "variable_workflow_01GyzCt2GgEbf4BMIIQQRWzwINchclo12": "datacenter-17"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01GOgFgf741wlOMOYHtxuReefoZQetTmK"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151AB09YZ40Q7HSKVYzm5wtJLUL2WsO33K",
+        "name": "Get VirtualMachine Memory",
+        "title": "Get VirtualMachine Memory",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get VirtualMachine Memory",
+          "input": {
+            "variable_workflow_01GZ2uyP6WhEimpUsSalJPkBF4Fy8PaeT": "vm-55"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01GpWMQNGKLmwcGwIo36yIOmTs87Ir7rS"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151AB2TPWZDZ5svZCosTpF0KKUbXbHRqRF",
+        "name": "Get vDisk Details",
+        "title": "Get vDisk Details",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get vDisk Details",
+          "input": {
+            "variable_workflow_01GR4hVHidTnpYWceVFpGEQYsRbmZgt5u": "vm-55",
+            "variable_workflow_01Gpwdji7p25ZTWDELg8EVi5qqFt6E650": "2000"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01GpqPzgGrKaODY7jMKrHeHAlw2lUJ9yq"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151AD4148QD12BBNoTNnF8YyXi75QTfDVC",
+        "name": "Delete vNIC from Virtual Machine",
+        "title": "Delete vNIC from Virtual Machine",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Delete vNIC from Virtual Machine",
+          "input": {
+            "variable_workflow_0150PAPBEAZK61jp1gFGv2CSh97T1kNSutp": "$activity.definition_activity_0151A8PJ5X4ED3vdK4MzakpVTmY9Eouhiz3.output.variable_workflow_0150P67V6CW5061m81PEWC2fGmWOeQH56xw$",
+            "variable_workflow_0150PAPBEB7087k4wf4cL5VwFylbVgOQgDf": "$activity.definition_activity_0151DFC7K4EX96DZkEpOwbIv4xJoHYbqhpX.output.variable_workflow_01GWEVZJNRxw8jWYuXFXQhMlmIYRu0BPZ$"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_0150PAF30FI6U2GC4tBcDq77KSSfZIJrbYZ"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151AD6OADZTS3oq4AiracTCeCzjXaTtx65",
+        "name": "Delete vDisk from Virtual Machine",
+        "title": "Delete vDisk from Virtual Machine",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Delete vDisk from Virtual Machine",
+          "input": {
+            "variable_workflow_01GpWSLbdkYfHYHgY2ydQ6tDnb5qAHgbv": "$activity.definition_activity_0151A8PJ5X4ED3vdK4MzakpVTmY9Eouhiz3.output.variable_workflow_0150P67V6CW5061m81PEWC2fGmWOeQH56xw$",
+            "variable_workflow_01GpXpWoLZNaej9kLDQwT2MBP0a4A94Db": "$activity.definition_activity_0151AFG56NLCG3Iw9kmt7RwpxGvZcU7XmPY.output.variable_workflow_01GZQ3VdKBs5BPgHXplyExW5MvRU6Ll2P$"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01GpWfxyslqFs6E8S67IEZciY1mUt5EAw"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151AD9SOIODP2rr2Lm2OzuMgRcxDgLghSS",
+        "name": "Delete Virtual Machine",
+        "title": "Delete Virtual Machine",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Delete Virtual Machine",
+          "input": {
+            "variable_workflow_01GR7ioMRMxCbWHWJDGiXsOEfuSOZyPEL": "$activity.definition_activity_0151A8PJ5X4ED3vdK4MzakpVTmY9Eouhiz3.output.variable_workflow_0150P67V6CW5061m81PEWC2fGmWOeQH56xw$"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01GR6dyiIcMGZIzbOSfhEscZghoVrzqhz"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0151C3TA5O04M7J02DgP0QgdoGfvn4MAgGO",
+        "name": "Delete Datacentre",
+        "title": "Delete Datacentre",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Delete Datacentre",
+          "input": {
+            "variable_workflow_0151C1TNI00VQ6obRrmDSHnwPOXuuLUytaq": "$activity.definition_activity_0151A8N4B3EJK0vkmO1WdclPxBCmjh8DKs2.output.variable_workflow_0150WA545XUMT2i4u9KoFcSlj2LeZZ3FrhD$"
+          },
+          "target": {
+            "execute_on_this_target": false,
+            "no_target": false,
+            "override_workflow_target": false,
+            "target_type": "01gQ9JO6NNJpw6sXHVGZEGRGZ2QoL5Ldk",
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_0151BY3HGJDIL28WwmAVd0KB5GiIWw7erWB"
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_01GL3E0xdaYZXuqMRV4Hh7u3Q0xvhcQBc": {
+      "unique_name": "definition_target_01GL3E0xdaYZXuqMRV4Hh7u3Q0xvhcQBc",
+      "name": " vCenter Server - aus-65esxvc-01 ",
+      "title": " vCenter Server - aus-65esxvc-01 ",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_01GL392jsVQARIRHOoEdfDPzDJzzwh12H",
+        "disable_certificate_validation": true,
+        "display_name": " vCenter Server - aus-65esxvc-01 ",
+        "host": "172.25.5.170",
+        "no_runtime_user": false,
+        "protocol": "https"
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_01GL392jsVQARIRHOoEdfDPzDJzzwh12H": {
+      "unique_name": "definition_runtime_user_01GL392jsVQARIRHOoEdfDPzDJzzwh12H",
+      "name": "aus-65esxvc-01 user",
+      "title": "aus-65esxvc-01 user",
+      "type": "runtime_user.web-service_basic_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "basic_password": "*****",
+        "basic_username": "*****",
+        "display_name": "aus-65esxvc-01 user"
+      }
+    }
+  },
+  "atomic_workflows": [
+    "definition_workflow_01GpWfxyslqFs6E8S67IEZciY1mUt5EAw",
+    "definition_workflow_01GOYBDb5n0CmWEOFR5nDEOCHgNN4t2Yb",
+    "definition_workflow_0150QD2DL1C2V1TW0QrqztNZURL4QbQJFVw",
+    "definition_workflow_01Go0MEMDodU27yG70Lx41VrmY1zSmIey",
+    "definition_workflow_01GR60D9AqKG0vrOpTNN9fDrzYkDqm3pC",
+    "definition_workflow_0150QFYX7NZ614mUJ9On8q36EmnByEmcmCb",
+    "definition_workflow_01GOXjuErgw3fXYwvsV9tdVTyAqidCetg",
+    "definition_workflow_01GOM2W92fh6RWB6pdoZgQL5rJxVbsDJb",
+    "definition_workflow_01GOkkEwiVeIiwsx6nCWR0X1SI3X8J770",
+    "definition_workflow_01GRJ5Yr2xP1lD8RzFjpKbGgz7FKdmP2i",
+    "definition_workflow_01GRTqSBXz95hxsxUDbRgP1ZQUPaFMMF2",
+    "definition_workflow_01GR6dyiIcMGZIzbOSfhEscZghoVrzqhz",
+    "definition_workflow_0150P0PNFY7EA5MCfhN20MP6R2lEpRdGzNh",
+    "definition_workflow_01GOtKsjtsLIpP4u0n6AWhNS9Emak5nW0",
+    "definition_workflow_01GuhNtD2Gmd8Yk3XCiPkdVOkbH3Nh6qr",
+    "definition_workflow_0150WA232HOAN2dVfYJFpxzAMh3dI72VDgp",
+    "definition_workflow_01GOrDWL4ca4vzB93QOnGxiE7ehrxCJHJ",
+    "definition_workflow_01GpWMQNGKLmwcGwIo36yIOmTs87Ir7rS",
+    "definition_workflow_01GOgFgf741wlOMOYHtxuReefoZQetTmK",
+    "definition_workflow_0150PAF30FI6U2GC4tBcDq77KSSfZIJrbYZ",
+    "definition_workflow_0150P7MX7CCIZ1DRWtdPVuR0Og6luHiUf9H",
+    "definition_workflow_0151BY3HGJDIL28WwmAVd0KB5GiIWw7erWB",
+    "definition_workflow_01GpQDYDdvFrLERruRkNRwgmf7nzayVVp",
+    "definition_workflow_01GOVMpZRZSYKsPyfUyAGUxeplhkxtAYo",
+    "definition_workflow_01GpTERVsadmxIjDV3IB5ZxjYyj5Iarkq",
+    "definition_workflow_0150Q99CYU17F35ZphAuqekGaUPWC6jrTB1",
+    "definition_workflow_01Gui2zLmfxX1dTqVhdtRofkKL7c8NxTz",
+    "definition_workflow_01GOiO0HL6RFRyDMTpNMy09wJEVNWLQcS",
+    "definition_workflow_0150P61S39AO519wiQDzUucyRzO4TMVJalc",
+    "definition_workflow_01GpqPzgGrKaODY7jMKrHeHAlw2lUJ9yq"
+  ]
+}
