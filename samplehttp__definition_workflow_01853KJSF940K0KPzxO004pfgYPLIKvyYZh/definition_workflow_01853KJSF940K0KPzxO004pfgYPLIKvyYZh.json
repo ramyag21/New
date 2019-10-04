@@ -1,0 +1,86 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01853KJSF940K0KPzxO004pfgYPLIKvyYZh",
+    "name": "HTTP Worklfows GET",
+    "title": "HTTP Worklfows GET",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "HTTP Worklfows GET",
+      "favorite": false,
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01853KNZUW7895eQVjvQlm1N6sO2sCwjGTJ",
+        "name": "HTTP Request",
+        "title": "HTTP Request",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJraWQiOiIyNSIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0.eyJhdWQiOm51bGwsInN1YiI6IjE3IiwiY3NyZlRva2VuIjoiOGYwMzVlOTAwMTg1NGUzZTkxZWZmMDA2NGQ4NDJhMGMiLCJpc3MiOiJzdWl0ZS1hdXRoIiwidGVuYW50SWQiOiIxIiwiZXhwIjoxNTYxMzg5NzI2LCJpYXQiOjE1NjEzODg4MTEsImp0aSI6IjdhM2U0M2JhLTkzMDUtNDI4NC05ZDc4LTRhMzA4NThkM2U0OSIsInJvbGV6IjpbIldNX0VOVklST05NRU5UX01BTkFHRVIiLCJTVUlURV9BRE1JTiIsIkNPX1JMX1VTRVIiLCJMSF9jb250ZW50X2F1dGhvciIsIkNPX1JMX0FETUlOIiwiTEhfc3lzdGVtX2FkbWluIiwiTEhfdGVuYW50X2FkbWluIiwiV01fQURNSU4iLCJXTV9VU0VSIiwiV01fQVBQTElDQVRJT05fQVJDSElURUNUIiwiU1VJVEVfVEVOQU5UX0FETUlOIiwiU1VJVEVfVVNFUl9BRE1JTiIsIldNX0RFVl9PUFMiLCJTVUlURV9VU0VSIiwiQ09fUkxfRklOQU5DSUFMX0VYUEVSVCIsIldNX1BST0pFQ1RfTUFOQUdFUiIsIkxIX29wZXJhdG9yIiwiTEhfYWRhcHRlcl9hdXRob3IiXX0.UOh-inl4_cbGIkd-Z7tFY3cDXBYKZWjfjaquU37TFHnKIQFWpn1uR6S5jzXSbJ9SzNXvtntmWTYGAqmctKGsROZkuN5bM-nLiIv5y-l-RtwWt0C8VydnKQOdr2WZ-6m2z4xZjP_IaCmAKVbd0LBgcZh9BNopV6Mqmtq_-VbLsxS9BTyaCHjwRdwSPgrP7oXQ3Tjr-SMhzMuJpfW4Eec3b9ftm5jY0umWyM9P8zu6ijGJ-_9jVBgk5Tga3mgGqFk5DwP9lnKATtP2ia2qijs0kq1ZbM5YzlWFY0jALKUyOyXAIgyW4bG2ZgNGLAAF3knpCkxVpkBy6pHfXjSyRLlYaQ"
+            }
+          ],
+          "display_name": "HTTP Request",
+          "method": "GET",
+          "relative_url": "/workflows",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_015BYI133FAY70x33jEwZ59TgqBIYLJ1J6j"
+          }
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_015BYI133FAY70x33jEwZ59TgqBIYLJ1J6j": {
+      "unique_name": "definition_target_015BYI133FAY70x33jEwZ59TgqBIYLJ1J6j",
+      "name": "CA Internal",
+      "title": "CA Internal",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": true,
+        "display_name": "CA Internal",
+        "host": "prerelease01.tidalsoft.local",
+        "no_runtime_user": true,
+        "path": "/be-console/api/v1",
+        "port": 26801,
+        "protocol": "https"
+      }
+    }
+  }
+}
