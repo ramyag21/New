@@ -1,0 +1,254 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01ANAQSNJRUN20JUavwOXbGNfbspwoTtNWE",
+    "name": "Copy-RG http test - UI unresponsive",
+    "title": "Copy-RG http test - UI unresponsive",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Copy-RG http test - UI unresponsive",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "target_type": "web-service.endpoint",
+        "target_id": "definition_target_01ANAD8KB5UGQ4Y6EZu4pokE6mbB2FVZq0r",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01AO5BOHKL8NP0k6WU2WD61WhkjOKNxagPy",
+        "name": "Generic CCS API Request",
+        "title": "Run Token API",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_call_method": "GET",
+          "continue_on_failure": false,
+          "display_name": "Run Token API",
+          "relative_url": "suite-auth/api/v1/token",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01AO5L3NZ1EB300RfEeRVTWUzn8fS9fWq7y",
+        "name": "JSONPath Query",
+        "title": "Retrieve Token Info",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Retrieve Token Info",
+          "input_json": "$activity.definition_activity_01AO5BOHKL8NP0k6WU2WD61WhkjOKNxagPy.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.token",
+              "jsonpath_query_name": "Token",
+              "jsonpath_query_type": "string"
+            }
+          ],
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01AO5CCKXKC7047Ro0sCWmqkyY4GKNz5kra",
+        "name": "HTTP Request",
+        "title": "GET token",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "continue_on_error_status_code": false,
+          "continue_on_failure": true,
+          "display_name": "GET token",
+          "method": "GET",
+          "relative_url": "/token",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": true,
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01ANAQT72L06N5Wgn7hChhdL8kcXwcnP4xF",
+        "name": "HTTP Request",
+        "title": "GET Tasks - JSON output ",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer $activity.definition_activity_01AO5L3NZ1EB300RfEeRVTWUzn8fS9fWq7y.output.jsonpath_queries.Token$"
+            }
+          ],
+          "display_name": "GET Tasks - JSON output ",
+          "method": "GET",
+          "relative_url": "/tasks?limit=3\u0026start=1",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "use_workflow_target": true
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01AO55XGLIEZ20OB1XEZE2u5lW85GLrc2JD",
+        "name": "HTTP Request",
+        "title": "GET Tasks - XML output ",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "content_type": "application/xml",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer $activity.definition_activity_01AO5L3NZ1EB300RfEeRVTWUzn8fS9fWq7y.output.jsonpath_queries.Token$"
+            }
+          ],
+          "display_name": "GET Tasks - XML output ",
+          "method": "GET",
+          "relative_url": "/tasks?limit=3\u0026start=1",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "use_workflow_target": true
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01ANAR5UKKKNW0IBQwAKBq83rBS212mXpZg",
+        "name": "HTTP Request",
+        "title": "GET Targets from external Env",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer $activity.definition_activity_01AO5L3NZ1EB300RfEeRVTWUzn8fS9fWq7y.output.jsonpath_queries.Token$"
+            }
+          ],
+          "display_name": "GET Targets from external Env",
+          "method": "GET",
+          "relative_url": "/Targets",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01ANAY0M3ENLC6iDLtiv4tsyeM48Ap7sMjl"
+          }
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_01ANAD8KB5UGQ4Y6EZu4pokE6mbB2FVZq0r": {
+      "unique_name": "definition_target_01ANAD8KB5UGQ4Y6EZu4pokE6mbB2FVZq0r",
+      "name": "RG QETest01 Internal",
+      "title": "RG QETest01 Internal",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": true,
+        "display_name": "RG QETest01 Internal",
+        "host": "qetest01.tidalsoft.local",
+        "no_runtime_user": true,
+        "path": "/be-console/api/v1",
+        "port": 34983,
+        "protocol": "https"
+      }
+    },
+    "definition_target_01ANAY0M3ENLC6iDLtiv4tsyeM48Ap7sMjl": {
+      "unique_name": "definition_target_01ANAY0M3ENLC6iDLtiv4tsyeM48Ap7sMjl",
+      "name": "RG External CPO ",
+      "title": "RG External CPO ",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_01ANAXCBSJBOL6BKnNl5bRphHcWg9JweDCT",
+        "disable_certificate_validation": false,
+        "display_name": "RG External CPO ",
+        "host": "cpo-maria-04.tidalsoft.local",
+        "no_runtime_user": false,
+        "path": "/api/v1",
+        "port": 51527,
+        "protocol": "http"
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_01ANAXCBSJBOL6BKnNl5bRphHcWg9JweDCT": {
+      "unique_name": "definition_runtime_user_01ANAXCBSJBOL6BKnNl5bRphHcWg9JweDCT",
+      "name": "RG tidalsoft",
+      "title": "RG tidalsoft",
+      "type": "runtime_user.web-service_basic_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "basic_password": "*****",
+        "basic_username": "*****",
+        "display_name": "RG tidalsoft"
+      }
+    }
+  }
+}
