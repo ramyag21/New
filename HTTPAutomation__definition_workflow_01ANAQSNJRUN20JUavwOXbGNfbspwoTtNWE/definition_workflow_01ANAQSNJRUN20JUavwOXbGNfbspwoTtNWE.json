@@ -1,8 +1,8 @@
 {
   "workflow": {
     "unique_name": "definition_workflow_01ANAQSNJRUN20JUavwOXbGNfbspwoTtNWE",
-    "name": "Copy-RG http test - UI unresponsive",
-    "title": "Copy-RG http test - UI unresponsive",
+    "name": "RG HTTP tests",
+    "title": "RG HTTP tests",
     "type": "generic.workflow",
     "base_type": "workflow",
     "variables": null,
@@ -11,7 +11,7 @@
         "is_atomic": false
       },
       "delete_workflow_instance": false,
-      "display_name": "Copy-RG http test - UI unresponsive",
+      "display_name": "RG HTTP tests",
       "runtime_user": {
         "override_target_runtime_user": false,
         "specify_on_workflow_start": false,
@@ -193,6 +193,89 @@
           }
         },
         "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01ASET0D14OGB5tHbxTcbC7mm3CEejyvaKO",
+        "name": "HTTP Request",
+        "title": "GET Targets from external Env",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer $activity.definition_activity_01AO5L3NZ1EB300RfEeRVTWUzn8fS9fWq7y.output.jsonpath_queries.Token$"
+            }
+          ],
+          "display_name": "GET Targets from external Env",
+          "method": "GET",
+          "relative_url": "/Targets",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01ANAY0M3ENLC6iDLtiv4tsyeM48Ap7sMjl"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01ASEY01ZNJLL3EJG52dN1YXd4xkku0gIFn",
+        "name": "WF",
+        "title": "WF",
+        "type": "workflow.sub_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "WF",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": true,
+          "target": {
+            "execute_on_this_target": true,
+            "target_id": "definition_target_01g3fukXs0icMbnAhaKJz0hwPnI55Extw",
+            "target_type": "web-service.endpoint"
+          },
+          "workflow_id": "definition_workflow_017IASOKH5DVM3cPvKrWeeopaYE02ZUl9Xh"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01AT8XUKN6EIF4qtHEbrgLYK90mboIbEkgb",
+        "name": "HTTP Request",
+        "title": "HTTP Request with cookies",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "display_name": "HTTP Request with cookies",
+          "method": "GET",
+          "relative_url": "/tasks?limit=3\u0026start=1",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
       }
     ],
     "categories": [
@@ -234,6 +317,22 @@
         "port": 51527,
         "protocol": "http"
       }
+    },
+    "definition_target_01g3fukXs0icMbnAhaKJz0hwPnI55Extw": {
+      "unique_name": "definition_target_01g3fukXs0icMbnAhaKJz0hwPnI55Extw",
+      "name": "Bitbucket End point",
+      "title": "Bitbucket End point",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": true,
+        "display_name": "Bitbucket End point",
+        "host": "bitbucket-eng-sjc1.cisco.com",
+        "no_runtime_user": true,
+        "path": "bitbucket/rest/api/1.0/projects/NEXTG",
+        "protocol": "https"
+      }
     }
   },
   "runtime_users": {
@@ -250,5 +349,50 @@
         "display_name": "RG tidalsoft"
       }
     }
-  }
+  },
+  "subworkflows": [
+    {
+      "workflow": {
+        "unique_name": "definition_workflow_017IASOKH5DVM3cPvKrWeeopaYE02ZUl9Xh",
+        "name": "WF",
+        "title": "WF",
+        "type": "generic.workflow",
+        "base_type": "workflow",
+        "variables": null,
+        "properties": {
+          "atomic": {
+            "is_atomic": false
+          },
+          "delete_workflow_instance": false,
+          "display_name": "WF",
+          "favorite": false,
+          "target": {
+            "target_type": "web-service.endpoint",
+            "target_id": "definition_target_01g3fukXs0icMbnAhaKJz0hwPnI55Extw",
+            "execute_on_workflow_target": true
+          }
+        },
+        "object_type": "definition_workflow",
+        "actions": [
+          {
+            "unique_name": "definition_activity_017IASS9GII3X1zytnTtHlHtwptu7RXOfz4",
+            "name": "Sleep",
+            "title": "Sleep",
+            "type": "core.sleep",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Sleep",
+              "skip_execution": false,
+              "sleep_interval": 1
+            },
+            "object_type": "definition_activity"
+          }
+        ],
+        "categories": [
+          "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+        ]
+      }
+    }
+  ]
 }
