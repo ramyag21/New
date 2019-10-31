@@ -1,0 +1,150 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01B0KIFO60E7P5BsjPkiLHdgjxX8DeefhCb",
+    "name": "bgtestpersisttable",
+    "title": "bgtestpersisttable",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "bgtestpersisttable",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01B0ZCYTKGCOY7f4zJYyY9VI5vmzNNCmU3a",
+        "name": "Select from Table",
+        "title": "Select from Table",
+        "type": "core.selectfromtable",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Select from Table",
+          "input_table": "$global.variable_01724IWM3ZNJR4BwLq33PzcUG0sKgAbfCOx.global.variable_01724IWM3ZNJR4BwLq33PzcUG0sKgAbfCOx$",
+          "number_of_rows": {
+            "all_rows": true,
+            "at_most": false
+          },
+          "persist_output": true,
+          "skip_execution": false,
+          "sorting": {
+            "no_sort": true,
+            "sort_by": false
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01B0KIO63Q26D0oPhTpDh6bSpdEMD5ZLd1R",
+        "name": "Read Table from JSON",
+        "title": "Read Table from JSON - Persist",
+        "type": "corejava.read_table_from_json",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Read Table from JSON - Persist",
+          "input_json": "{\n\"user\": {\n\"firstName\": \"Chandra\",\n\"lastName\": \"Addan\",\n\"midName\": \"\",\n\"email\": \"caddan@cisco.com\",\n\"metadata\": {},\n\"tenantId\": 6,\n\"invited\": false,\n\"id\": 66,\n\"accountNumber\": \"2162688\",\n\"userType\": null,\n\"externalId\": null,\n\"enabled\": true,\n\"deleted\": false,\n\"groups\": [\n{\n\"name\": \"Tenant Administrators\",\n\"description\": null,\n\"tenantId\": 6,\n\"roles\": [\n\"SUITE_TENANT_ADMIN\",\n\"SUITE_USER_ADMIN\",\n\"LH_content_author\",\n\"LH_system_admin\",\n\"LH_operator\",\n\"LH_tenant_admin\",\n\"LH_adapter_author\"\n],\n\"id\": 59,\n\"productId\": \"common-framework\",\n\"productGroupId\": \"common-framework-tenant-admin\",\n\"created\": 1566488925468,\n\"lastUpdated\": 1566488925468,\n\"enabled\": true,\n\"deleted\": false,\n\"ssoGroup\": false\n}\n],\n\"roles\": [\n\"SUITE_USER\"\n],\n\"created\": 1566488925426,\n\"lastUpdated\": 1566488925426\n},\n\"tenant\": {\n\"name\": \"chandra\",\n\"tenantName\": \"chandra\",\n\"description\": null,\n\"domainName\": null,\n\"metadata\": {},\n\"id\": 6,\n\"parentId\": 1,\n\"externalId\": null,\n\"created\": 1566488925415,\n\"lastUpdated\": 1566488925415,\n\"enabled\": true,\n\"deleted\": false\n},\n\"aggregatedRoles\": [\n\"SUITE_TENANT_ADMIN\",\n\"SUITE_USER_ADMIN\",\n\"LH_content_author\",\n\"LH_system_admin\",\n\"LH_operator\",\n\"LH_tenant_admin\",\n\"LH_adapter_author\",\n\"SUITE_USER\"\n]\n}",
+          "jsonpath_query": "$..user.accountNumber",
+          "persist_output": true,
+          "populate_columns": false,
+          "skip_execution": false,
+          "table_columns": [
+            {
+              "column_name": "accountNumber",
+              "column_type": "string"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01B0KKMRQ7N5J7QcnVfhvuog6TcxikGMzyA",
+        "name": "Sleep",
+        "title": "Sleep",
+        "type": "core.sleep",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Sleep",
+          "skip_execution": false,
+          "sleep_interval": 300
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "variables": {
+    "variable_01724IWM3ZNJR4BwLq33PzcUG0sKgAbfCOx": {
+      "unique_name": "variable_01724IWM3ZNJR4BwLq33PzcUG0sKgAbfCOx",
+      "schema_id": "tabletype_01724ERY4VHVY1qRkdaFYfNYip34DFGid2l",
+      "properties": {
+        "value": [
+          {
+            "column_data": {
+              "ACCOUNTKEYNAME": "HTTP Action",
+              "METHOD": "POST",
+              "PAYLOAD": "{   \"schema_id\": \"015DULFLZ3O6Z2eF8CSgWas9LhI2RstkZTr\",   \"name\": \"AM HTTP Basic Authentication\",   \"properties\": {     \"display_name\": \"AM HTTP Basic Authentication\",     \"basic_username\": \"root\",     \"basic_password\": \"control\"   } }",
+              "RElATIVEPATH": "be-console/api/v1/runtime_users"
+            }
+          }
+        ],
+        "scope": "global",
+        "name": "AccountKey Test",
+        "type": "datatype.table",
+        "is_required": false
+      },
+      "object_type": "variable"
+    }
+  },
+  "table_types": {
+    "tabletype_01724ERY4VHVY1qRkdaFYfNYip34DFGid2l": {
+      "unique_name": "tabletype_01724ERY4VHVY1qRkdaFYfNYip34DFGid2l",
+      "data_type": "datatype.tabletype",
+      "display_name": "AccountKey Test",
+      "columns": [
+        {
+          "name": "ACCOUNTKEYNAME",
+          "title": "ACCOUNTKEY NAME",
+          "type": "string"
+        },
+        {
+          "name": "METHOD",
+          "title": "METHOD",
+          "type": "string"
+        },
+        {
+          "name": "PAYLOAD",
+          "title": "PAYLOAD",
+          "type": "string"
+        },
+        {
+          "name": "RElATIVEPATH",
+          "title": "RELATIVEPATH",
+          "type": "string"
+        }
+      ],
+      "base_type": "datatype",
+      "object_type": "tabletype"
+    }
+  }
+}
