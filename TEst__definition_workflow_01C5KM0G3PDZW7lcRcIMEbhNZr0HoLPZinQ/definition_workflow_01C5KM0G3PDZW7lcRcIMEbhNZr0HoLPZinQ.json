@@ -1,0 +1,61 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01C5KM0G3PDZW7lcRcIMEbhNZr0HoLPZinQ",
+    "name": "SM-NEXTG-14833-test",
+    "title": "SM-NEXTG-14833-test",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "string-var",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01C5KMQRDX15H36lx1sO8h31SWkLlrPsaNq",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "SM-NEXTG-14833-test",
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01C5KMTH9HO9C45by5VwBkExznKltFHNY5H",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables",
+          "skip_execution": false,
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_01C5KM0G3PDZW7lcRcIMEbhNZr0HoLPZinQ.local.variable_workflow_01C5KMQRDX15H36lx1sO8h31SWkLlrPsaNq$",
+              "variable_value_new": "\u003ch2\u003e Oracle Update Statement\u003c/h2\u003e\n\n\u003ctable\u003e\n\u003ctr\u003e\n\u003cth\u003eActivity Name\u003c/th\u003e\n\u003cth\u003eTrue/False\u003c/th\u003e\n\u003cth\u003eStatus Code\u003c/th\u003e\n\u003cth\u003eError Message\u003c/th\u003e\n\u003c/tr\u003e\n\n\u003ctr\u003e\n\u003ctd\u003eSelect from v$session_wait as system admin user (text) \u003ctd\u003e\n\u003ctd\u003e[$activity.Select from v$session_wait as system admin user (text).output.Succeeded$]\u003c/td\u003e\n\u003ctd\u003e[$activity.Select from v$session_wait as system admin user (text).output.Error.Error Code.code$]\u003c/td\u003e\n\u003ctd\u003e[$activity.Select from v$session_wait as system admin user (text).output.Error.Error Message.message$]\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003c\u003ctd\u003eVALIDATE THAN TABLE EXIATS AND TUNCATE ROWS \u003ctd\u003e\n\u003ctd\u003e[$activity.VALIDATE THAN TABLE EXIATS AND TUNCATE ROWS.output.Succeeded$]\u003c/td\u003e\n\u003ctd\u003e[$activity.VALIDATE THAN TABLE EXIATS AND TUNCATE ROWS.output.Error.Error Code.code$]\u003c/td\u003e\n\u003ctd\u003e[$activity.VALIDATE THAN TABLE EXIATS AND TUNCATE ROWS.output.Error.Error Message.message$]\u003c/td\u003e/tr\u003e\n\n\u003ctd\u003eInsert Bulk into Table via JDBCS \u003ctd\u003e\n\u003ctd\u003e/td\u003e"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  }
+}
