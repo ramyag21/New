@@ -1,0 +1,1542 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH",
+    "name": "RG AM Web Adapter",
+    "title": "RG AM Web Adapter",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "tabletype_01BA9WKCP5TIE7f6qg46HByzSPpHYZ21Jdw",
+        "properties": {
+          "scope": "local",
+          "name": "Failed Test Case Table",
+          "type": "datatype.table",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01BA9WP87T5QW53dG6JxHjUJxUUMv2F7HFE",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "local",
+          "name": "Test Passed",
+          "type": "datatype.integer",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01BA9ZOM3PQ5K0Vrxj4E9KhzEGWF2F7V3xv",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "output",
+          "name": "Final Count Succeeded",
+          "type": "datatype.integer",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01BA9X1F5WLM10i565naiTrW9sDXcbME8Eu",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "tabletype_01BA9WKCP5TIE7f6qg46HByzSPpHYZ21Jdw",
+        "properties": {
+          "scope": "local",
+          "name": "Succeeded Test Case Table",
+          "type": "datatype.table",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01BA9ZEMHYEHV3LWYS4FyAU9leLPCDAljJO",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "tabletype_01BA9WKCP5TIE7f6qg46HByzSPpHYZ21Jdw",
+        "properties": {
+          "scope": "output",
+          "name": "List of Succeeded Test Cases",
+          "type": "datatype.table",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01BDPYWWHPJBN6pyY5Tp9wwJ95rkd3GH88G",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "tabletype_0172TK6NRMI8A3W1hJ6bDz2mADkoowSKtUH",
+        "properties": {
+          "scope": "output",
+          "name": "List of Failed Test Cases",
+          "type": "datatype.table",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01BDPTZVMJ46E3F6Dg2ah0SArJIIjarwDM3",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "local",
+          "name": "Test Failed",
+          "type": "datatype.integer",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01BA9ZK8C3OM47doWEEhonf9yuSvSRTx8Qw",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "Results",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01BA9YVGR7LVU4wxY18Vx3OwuFRdXM0f2kg",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "output",
+          "name": "Final Test Count - Failed",
+          "type": "datatype.integer",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01BA9X8UEM5DQ7UteYfDwtuKRcCBT3Qri19",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 1,
+          "scope": "local",
+          "name": "loop count",
+          "type": "datatype.integer",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01BA9XNGNU6LL1WANe2IXIiynQ98ON6IeG7",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "/root/web.sh",
+          "scope": "output",
+          "name": "Output file",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01BA9YPGCXFRX3LrLT7plbFColjggRZQFll",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "description": "The workflow covers below scenarios:\n\n1) HTTP action with GET, POST, PATCH, DELETE methods\n\n2) Test Third party APIs\n\n3) Test Relative URLS with parameters\n\n4) Verify if non JSON output formats work as expected\n\n5) Verify running API from remote environments\n\n6) Test Cookies \n\n\n",
+      "display_name": "RG AM Web Adapter",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "target_type": "web-service.endpoint",
+        "target_id": "definition_target_01GL3E0xdaYZXuqMRV4Hh7u3Q0xvhcQBc",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01BB5FYJVZA8P0xN4bVwImkAj7jbeQJJe2z",
+        "name": "Write File",
+        "title": "Initialize Automation Status File",
+        "type": "terminal.write_file",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "content": "cat /dev/null \u003e web_automation_status",
+          "continue_on_failure": false,
+          "display_name": "Initialize Automation Status File",
+          "encoding": "utf-8",
+          "file_name": "/root/web_automation_status",
+          "options": "overwrite",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_0191LAUMTIJQG2rLOHF7awzXjXgGbTPQtfs"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01BB5I4IXP05X7aBzCnr2UIejFufKhzwYTJ",
+        "name": "Delete from Table",
+        "title": "Delete from Succeeded Test Case Table",
+        "type": "core.deleterowfromtable",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Delete from Succeeded Test Case Table",
+          "input_table": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZEMHYEHV3LWYS4FyAU9leLPCDAljJO$",
+          "rows": {
+            "all_rows": true,
+            "rows_matching_criteria": false
+          },
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01BB5IA255Z2K1ec7FNNOtMvpmqgYcqYJnx",
+        "name": "Delete from Table",
+        "title": "Delete from Failed Test Case Table",
+        "type": "core.deleterowfromtable",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Delete from Failed Test Case Table",
+          "input_table": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9WP87T5QW53dG6JxHjUJxUUMv2F7HFE$",
+          "rows": {
+            "all_rows": true,
+            "rows_matching_criteria": false
+          },
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01B55F7DYCWHZ6tpVFcMqZ94mXGsUa3fVXc",
+        "name": "Generic CCS API Request",
+        "title": "Run Token API",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_call_method": "GET",
+          "continue_on_failure": false,
+          "display_name": "Run Token API",
+          "relative_url": "suite-auth/api/v1/token",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01B55GEYHH12C4zvhlIwb1QObi7nyI4iEgV",
+        "name": "JSONPath Query",
+        "title": "Retrieve Token Info",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Retrieve Token Info",
+          "input_json": "$activity.definition_activity_01B55F7DYCWHZ6tpVFcMqZ94mXGsUa3fVXc.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.token",
+              "jsonpath_query_name": "Token",
+              "jsonpath_query_type": "string"
+            }
+          ],
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01B55OC8QKM6T1GsJ9qMOzXfALwCAzwXsPr",
+        "name": "Generic CCS API Request",
+        "title": "GET Targets",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_call_method": "GET",
+          "continue_on_failure": false,
+          "display_name": "GET Targets",
+          "relative_url": "be-console/api/v1/schemas?schema_type=view\u0026base_type=target\u0026is_internal=false",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01B55PI8YVRAR6qZQkiaSmSGFJAqbrNe6Eb",
+        "name": "JSONPath Query",
+        "title": "GET Target schema ID",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "GET Target schema ID",
+          "input_json": "$activity.definition_activity_01B55OC8QKM6T1GsJ9qMOzXfALwCAzwXsPr.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.[?(@.title=='HTTP Endpoint')].id",
+              "jsonpath_query_name": "HTTP schema",
+              "jsonpath_query_type": "string"
+            }
+          ],
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01BAA1F1G5XLZ7a8EpMq8oPYqwowlzP1Q6A",
+        "name": "Generic CCS API Request",
+        "title": "API - Test POST",
+        "type": "ccs.api_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "api_body": "{\n\"name\": \"Internal HTTP\",\n\"properties\": {\n\"no_runtime_user\": true,\n\"disable_certificate_validation\": true,\n\"display_name\": \"Internal HTTP\",\n\"protocol\": \"http\",\n\"host\": \"www.google.com\"\n},\n\"schema_id\": \"$activity.definition_activity_01B55PI8YVRAR6qZQkiaSmSGFJAqbrNe6Eb.output.jsonpath_queries.HTTP schema$\"\n}",
+          "api_call_method": "POST",
+          "continue_on_failure": false,
+          "display_name": "API - Test POST",
+          "relative_url": "be-console/api/v1/targets",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01BAAMXOL8L7L3kfiVWIqVxjiJ97m5yveww",
+        "name": "Group",
+        "title": "Test HTTP methods",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Test HTTP methods",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01B55IE0EC2X64goTrZL8NvpdxYdMSfivtQ",
+            "name": "HTTP Request",
+            "title": "Test POST - Create Target",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "body": "{\n\"name\": \"Internal HTTP\",\n\"properties\": {\n\"no_runtime_user\": true,\n\"disable_certificate_validation\": true,\n\"display_name\": \"Internal HTTP\",\n\"protocol\": \"http\",\n\"host\": \"www.google.com\"\n},\n\"schema_id\": \"$activity.definition_activity_01B55PI8YVRAR6qZQkiaSmSGFJAqbrNe6Eb.output.jsonpath_queries.HTTP schema$\"\n}",
+              "continue_on_error_status_code": true,
+              "continue_on_failure": true,
+              "custom_headers": [
+                {
+                  "name": "Authorization",
+                  "value": "Bearer $activity.definition_activity_01B55GEYHH12C4zvhlIwb1QObi7nyI4iEgV.output.jsonpath_queries.Token$"
+                }
+              ],
+              "display_name": "Test POST - Create Target",
+              "method": "POST",
+              "relative_url": "/targets",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01ANAD8KB5UGQ4Y6EZu4pokE6mbB2FVZq0r"
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01BABKA8UHG702mGK2W8fZw9JAUUFpK6KK5",
+            "name": "Condition Block",
+            "type": "logic.if_else",
+            "base_type": "activity",
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_01BABKAD1GPWC10vx0or6mbMTsi4q0YE4jX",
+                "name": "Condition Branch",
+                "title": "Test Passed?",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_01B55IE0EC2X64goTrZL8NvpdxYdMSfivtQ.output.succeeded$",
+                    "operator": "eq",
+                    "right_operand": true
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "Test Passed?",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01BABKODKC5LN1XWmRfrNFFA4Y1BAL5nDTx",
+                    "name": "Set Variables",
+                    "title": "Increment Loop",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Increment Loop",
+                      "skip_execution": false,
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZOM3PQ5K0Vrxj4E9KhzEGWF2F7V3xv$",
+                          "variable_value_new": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZOM3PQ5K0Vrxj4E9KhzEGWF2F7V3xv$+1"
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01BABL4EQULBK6FTCYEUuEY1IZSJRrJt3AF",
+                    "name": "Add Row to Table",
+                    "title": "Update Passed Tests Table",
+                    "type": "core.addrowtotable",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "continue_on_failure": false,
+                      "display_name": "Update Passed Tests Table",
+                      "input_table": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZEMHYEHV3LWYS4FyAU9leLPCDAljJO$",
+                      "row": [
+                        {
+                          "key": "TestCase",
+                          "type": "string",
+                          "value": "POST - Create Target"
+                        }
+                      ],
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              },
+              {
+                "unique_name": "definition_activity_01BABKAEKWCZA7Qq09izTX7ho5jLwxDLfSo",
+                "name": "Condition Branch",
+                "title": "Test Failed?",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_01B55IE0EC2X64goTrZL8NvpdxYdMSfivtQ.output.succeeded$",
+                    "operator": "eq",
+                    "right_operand": false
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "Test Failed?",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01BABL6XPIHB96mZyiTPYtetK8ivY36txFi",
+                    "name": "Set Variables",
+                    "title": "Increment Loop",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Increment Loop",
+                      "skip_execution": false,
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZK8C3OM47doWEEhonf9yuSvSRTx8Qw$",
+                          "variable_value_new": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZK8C3OM47doWEEhonf9yuSvSRTx8Qw$+1"
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01BABL9185AFZ7VGNSXrreXRP7zPsN3sBQF",
+                    "name": "Add Row to Table",
+                    "title": "Updated Failed Tests",
+                    "type": "core.addrowtotable",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "continue_on_failure": false,
+                      "display_name": "Updated Failed Tests",
+                      "input_table": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZEMHYEHV3LWYS4FyAU9leLPCDAljJO$",
+                      "row": [
+                        {
+                          "key": "TestCase",
+                          "type": "string",
+                          "value": "POST - Create Target"
+                        }
+                      ],
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01BAA8AW6ZUU72f1qRsyttydK3iFAo5l6zA",
+            "name": "JSONPath Query",
+            "title": "Extract Created Target ID",
+            "type": "corejava.jsonpathquery",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Extract Created Target ID",
+              "input_json": "$activity.definition_activity_01BAA1F1G5XLZ7a8EpMq8oPYqwowlzP1Q6A.output.response_body$",
+              "jsonpath_queries": [
+                {
+                  "jsonpath_query": "$.id",
+                  "jsonpath_query_name": "Target Schema ID",
+                  "jsonpath_query_type": "string"
+                }
+              ],
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01B60N1C5M8904b44cti4dVvufunkT88Tak",
+            "name": "HTTP Request",
+            "title": "Test Target - Options",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "continue_on_error_status_code": true,
+              "continue_on_failure": true,
+              "custom_headers": [
+                {
+                  "name": "Authorization",
+                  "value": "Bearer \"$activity.definition_activity_01B55GEYHH12C4zvhlIwb1QObi7nyI4iEgV.output.jsonpath_queries.Token$\""
+                }
+              ],
+              "display_name": "Test Target - Options",
+              "method": "OPTIONS",
+              "relative_url": "/targets/$activity.definition_activity_01BAA8AW6ZUU72f1qRsyttydK3iFAo5l6zA.output.jsonpath_queries.Target Schema ID$",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01ANAD8KB5UGQ4Y6EZu4pokE6mbB2FVZq0r"
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01BB5L1HCXGTL5jGYSnEE9vWAHm9hp051oh",
+            "name": "Condition Block",
+            "type": "logic.if_else",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_01BB5L1JC2CQL0eQMLSEtSt85sLXcpdS18G",
+                "name": "Condition Branch",
+                "title": "Test Passed?",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_01B60N1C5M8904b44cti4dVvufunkT88Tak.output.succeeded$",
+                    "operator": "eq",
+                    "right_operand": true
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "Test Passed?",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01BB5L1KNOQBV1EiiUNN2CK0A7SEaA0eVlB",
+                    "name": "Set Variables",
+                    "title": "Increment Loop",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Increment Loop",
+                      "skip_execution": false,
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZOM3PQ5K0Vrxj4E9KhzEGWF2F7V3xv$",
+                          "variable_value_new": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZOM3PQ5K0Vrxj4E9KhzEGWF2F7V3xv$+1"
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01BB5L1LS53KG0WEDZtZueZU38UVtKYAd1u",
+                    "name": "Add Row to Table",
+                    "title": "Update Passed Tests Table",
+                    "type": "core.addrowtotable",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "continue_on_failure": false,
+                      "display_name": "Update Passed Tests Table",
+                      "input_table": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZEMHYEHV3LWYS4FyAU9leLPCDAljJO$",
+                      "row": [
+                        {
+                          "key": "TestCase",
+                          "type": "string",
+                          "value": "Test Options Method"
+                        }
+                      ],
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              },
+              {
+                "unique_name": "definition_activity_01BB5L1N1AICO4nEe7ObjN1AeEbvSQAfGCC",
+                "name": "Condition Branch",
+                "title": "Test Failed?",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_01B60N1C5M8904b44cti4dVvufunkT88Tak.output.succeeded$",
+                    "operator": "eq",
+                    "right_operand": false
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "Test Failed?",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01BB5L1OH3KNN1PtW5KLYfB7cLxWniWgGFc",
+                    "name": "Set Variables",
+                    "title": "Increment Loop",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Increment Loop",
+                      "skip_execution": false,
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZK8C3OM47doWEEhonf9yuSvSRTx8Qw$",
+                          "variable_value_new": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZK8C3OM47doWEEhonf9yuSvSRTx8Qw$+1"
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01BB5L1Q19BZA6oFAsa9LCy10JPTzgBi1tw",
+                    "name": "Add Row to Table",
+                    "title": "Updated Failed Tests",
+                    "type": "core.addrowtotable",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "continue_on_failure": false,
+                      "display_name": "Updated Failed Tests",
+                      "input_table": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZEMHYEHV3LWYS4FyAU9leLPCDAljJO$",
+                      "row": [
+                        {
+                          "key": "TestCase",
+                          "type": "string",
+                          "value": "Test Options Method"
+                        }
+                      ],
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01B6VMLN0T1WX2xLLimnB8MVJBvA1sbYU56",
+            "name": "HTTP Request",
+            "title": "Test GET Target Details",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "continue_on_error_status_code": true,
+              "continue_on_failure": false,
+              "custom_headers": [
+                {
+                  "name": "Authorization",
+                  "value": "Bearer $activity.definition_activity_01B55GEYHH12C4zvhlIwb1QObi7nyI4iEgV.output.jsonpath_queries.Token$"
+                }
+              ],
+              "display_name": "Test GET Target Details",
+              "method": "GET",
+              "relative_url": "/targets/$activity.definition_activity_01BAA8AW6ZUU72f1qRsyttydK3iFAo5l6zA.output.jsonpath_queries.Target Schema ID$",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01ANAD8KB5UGQ4Y6EZu4pokE6mbB2FVZq0r"
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01BB5LK0ZNN6X3CV55gBkTMo3lgqCGhVICp",
+            "name": "Condition Block",
+            "type": "logic.if_else",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_01BB5LK32CNUJ5JSA83XRG4cZo3gKvwQ1zX",
+                "name": "Condition Branch",
+                "title": "Test Passed?",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_01B6VMLN0T1WX2xLLimnB8MVJBvA1sbYU56.output.succeeded$",
+                    "operator": "eq",
+                    "right_operand": true
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "Test Passed?",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01BB5LK4IICKO5B3vebsG9yC5UHxkFhJlm8",
+                    "name": "Set Variables",
+                    "title": "Increment Loop",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Increment Loop",
+                      "skip_execution": false,
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZOM3PQ5K0Vrxj4E9KhzEGWF2F7V3xv$",
+                          "variable_value_new": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZOM3PQ5K0Vrxj4E9KhzEGWF2F7V3xv$+1"
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01BB5LK5QO5YR1cWjXbo8oZxK6U2XgpL0PZ",
+                    "name": "Add Row to Table",
+                    "title": "Update Passed Tests Table",
+                    "type": "core.addrowtotable",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "continue_on_failure": false,
+                      "display_name": "Update Passed Tests Table",
+                      "input_table": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZEMHYEHV3LWYS4FyAU9leLPCDAljJO$",
+                      "row": [
+                        {
+                          "key": "TestCase",
+                          "type": "string",
+                          "value": "Test GET method"
+                        }
+                      ],
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              },
+              {
+                "unique_name": "definition_activity_01BB5LK70O6K419Ev7GVBbAs3DqyUhcjUsM",
+                "name": "Condition Branch",
+                "title": "Test Failed?",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_01B6VMLN0T1WX2xLLimnB8MVJBvA1sbYU56.output.succeeded$",
+                    "operator": "eq",
+                    "right_operand": false
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "Test Failed?",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01BB5LK8DFWKH5EdxVWhc2bZC5wZ21Yd1Rs",
+                    "name": "Set Variables",
+                    "title": "Increment Loop",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Increment Loop",
+                      "skip_execution": false,
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZK8C3OM47doWEEhonf9yuSvSRTx8Qw$",
+                          "variable_value_new": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZK8C3OM47doWEEhonf9yuSvSRTx8Qw$+1"
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01BB5LK9N6H7F3a14W1xBw9WTp4fTWbaxwk",
+                    "name": "Add Row to Table",
+                    "title": "Updated Failed Tests",
+                    "type": "core.addrowtotable",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "continue_on_failure": false,
+                      "display_name": "Updated Failed Tests",
+                      "input_table": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZEMHYEHV3LWYS4FyAU9leLPCDAljJO$",
+                      "row": [
+                        {
+                          "key": "TestCase",
+                          "type": "string",
+                          "value": "Test GET method"
+                        }
+                      ],
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01B5608V5A2PA4rIDbW4KaPasaZzcvZHadG",
+            "name": "HTTP Request",
+            "title": "Test PATCH - Update Target",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "body": "{\n\"properties\": {\n\"no_runtime_user\": true,\n\"disable_certificate_validation\": false,\n\"display_name\": \"Internal HTTP\",\n\"protocol\": \"https\",\n\"host\": \"www.cisco.com\"\n}\n}",
+              "continue_on_error_status_code": false,
+              "continue_on_failure": true,
+              "custom_headers": [
+                {
+                  "name": "Authorization",
+                  "value": "Bearer $activity.definition_activity_01B55GEYHH12C4zvhlIwb1QObi7nyI4iEgV.output.jsonpath_queries.Token$"
+                }
+              ],
+              "display_name": "Test PATCH - Update Target",
+              "method": "PATCH",
+              "relative_url": "/targets/$activity.definition_activity_01BAA8AW6ZUU72f1qRsyttydK3iFAo5l6zA.output.jsonpath_queries.Target Schema ID$",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01ANAD8KB5UGQ4Y6EZu4pokE6mbB2FVZq0r"
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01BH4E8R0WMM67AKJ2lrCX3oMLDSLl9v8Jh",
+            "name": "Condition Block",
+            "type": "logic.if_else",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_01BH4E8T1BI744CPB86LjerTAuE7soi9BXM",
+                "name": "Condition Branch",
+                "title": "Test Passed?",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_01B5608V5A2PA4rIDbW4KaPasaZzcvZHadG.output.succeeded$",
+                    "operator": "eq",
+                    "right_operand": true
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "Test Passed?",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01BH4E8UCVVC30rAZlMjpC9dqeXioagv6By",
+                    "name": "Set Variables",
+                    "title": "Increment Loop",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Increment Loop",
+                      "skip_execution": false,
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZOM3PQ5K0Vrxj4E9KhzEGWF2F7V3xv$",
+                          "variable_value_new": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZOM3PQ5K0Vrxj4E9KhzEGWF2F7V3xv$+1"
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01BH4E8VJ06A05Kr0XJYNr3JxmUAGOtI7Ho",
+                    "name": "Add Row to Table",
+                    "title": "Update Passed Tests Table",
+                    "type": "core.addrowtotable",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "continue_on_failure": false,
+                      "display_name": "Update Passed Tests Table",
+                      "input_table": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZEMHYEHV3LWYS4FyAU9leLPCDAljJO$",
+                      "row": [
+                        {
+                          "key": "TestCase",
+                          "type": "string",
+                          "value": "Test PATCH method"
+                        }
+                      ],
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              },
+              {
+                "unique_name": "definition_activity_01BH4E8WRCHYD1cND5O5TpUGkLDWPl5y3Df",
+                "name": "Condition Branch",
+                "title": "Test Failed?",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_01B5608V5A2PA4rIDbW4KaPasaZzcvZHadG.output.succeeded$",
+                    "operator": "eq",
+                    "right_operand": false
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "Test Failed?",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01BH4E8YDM98U3H6B1ir00iLG8dmU3EnFBI",
+                    "name": "Set Variables",
+                    "title": "Increment Loop",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Increment Loop",
+                      "skip_execution": false,
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZK8C3OM47doWEEhonf9yuSvSRTx8Qw$",
+                          "variable_value_new": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZK8C3OM47doWEEhonf9yuSvSRTx8Qw$+1"
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01BH4E8ZR2GK15JUp6T8yV962VWfNBReF73",
+                    "name": "Add Row to Table",
+                    "title": "Updated Failed Tests",
+                    "type": "core.addrowtotable",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "continue_on_failure": false,
+                      "display_name": "Updated Failed Tests",
+                      "input_table": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZEMHYEHV3LWYS4FyAU9leLPCDAljJO$",
+                      "row": [
+                        {
+                          "key": "TestCase",
+                          "type": "string",
+                          "value": "Test PATCH method"
+                        }
+                      ],
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01B562N9VJMP92ughEpAmRuD8Huc3F3BK1A",
+            "name": "HTTP Request",
+            "title": "Test Connect ",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "continue_on_error_status_code": false,
+              "continue_on_failure": true,
+              "custom_headers": [
+                {
+                  "name": "Authorization",
+                  "value": "Bearer $activity.definition_activity_01B55GEYHH12C4zvhlIwb1QObi7nyI4iEgV.output.jsonpath_queries.Token$"
+                }
+              ],
+              "display_name": "Test Connect ",
+              "method": "CONNECT",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01ANAY0M3ENLC6iDLtiv4tsyeM48Ap7sMjl"
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01BH40F1EK50B2DC60qGfjIRFtjeNYr1P5p",
+            "name": "Condition Block",
+            "title": "Condition Block",
+            "type": "logic.if_else",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Condition Block",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_01BH40F63RL911XmVndPFgMinifp635NScl",
+                "name": "Condition Branch",
+                "title": "Test Passed?",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_01B562N9VJMP92ughEpAmRuD8Huc3F3BK1A.output.succeeded$",
+                    "operator": "eq",
+                    "right_operand": true
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "Test Passed?",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01BH3WBWYK9GA17zvdjEYM3dsDNc436Q56P",
+                    "name": "Set Variables",
+                    "title": "Increment Loop",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Increment Loop",
+                      "skip_execution": false,
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZOM3PQ5K0Vrxj4E9KhzEGWF2F7V3xv$",
+                          "variable_value_new": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZOM3PQ5K0Vrxj4E9KhzEGWF2F7V3xv$+1"
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01BH3WBY2UN7E01odGzf2IG3dh1e2hJVnRu",
+                    "name": "Add Row to Table",
+                    "title": "Update Passed Tests Table",
+                    "type": "core.addrowtotable",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "continue_on_failure": false,
+                      "display_name": "Update Passed Tests Table",
+                      "input_table": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZEMHYEHV3LWYS4FyAU9leLPCDAljJO$",
+                      "row": [
+                        {
+                          "key": "TestCase",
+                          "type": "string",
+                          "value": "Test Connect Method"
+                        }
+                      ],
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              },
+              {
+                "unique_name": "definition_activity_01BH40F7QOTK41FeHTuMhYr5Wb2fGBDgYjz",
+                "name": "Condition Branch",
+                "title": "Test Failed?",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_01B562N9VJMP92ughEpAmRuD8Huc3F3BK1A.output.succeeded$",
+                    "operator": "eq",
+                    "right_operand": false
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "Test Failed?",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01BH3WC0TCCK75BzKhILprbjxRd9SD4ZLVT",
+                    "name": "Set Variables",
+                    "title": "Increment Loop",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Increment Loop",
+                      "skip_execution": false,
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZK8C3OM47doWEEhonf9yuSvSRTx8Qw$",
+                          "variable_value_new": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZK8C3OM47doWEEhonf9yuSvSRTx8Qw$+1"
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01BH3WC24IJSD7hK1lRLo52K0jQiShLBmKT",
+                    "name": "Add Row to Table",
+                    "title": "Updated Failed Tests",
+                    "type": "core.addrowtotable",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "continue_on_failure": false,
+                      "display_name": "Updated Failed Tests",
+                      "input_table": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZEMHYEHV3LWYS4FyAU9leLPCDAljJO$",
+                      "row": [
+                        {
+                          "key": "TestCase",
+                          "type": "string",
+                          "value": "Test Connect Method"
+                        }
+                      ],
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01BAAP1GQW4LE0KBf1p1FkVp1gbjkomDVGZ",
+        "name": "HTTP Request",
+        "title": "Test Third party APIs",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "continue_on_error_status_code": true,
+          "continue_on_failure": false,
+          "display_name": "Test Third party APIs",
+          "method": "GET",
+          "relative_url": "America/Chicago",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01BAAPR6GRDSQ6MgV7JNZyqxhX3W7UnGxr9"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01BAARFSIB6OP2vXC7waFLbEs5c8ZGBiIL5",
+        "name": "HTTP Request",
+        "title": "Test Relative URL with parameters",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "continue_on_error_status_code": false,
+          "continue_on_failure": true,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer $activity.definition_activity_01B55GEYHH12C4zvhlIwb1QObi7nyI4iEgV.output.jsonpath_queries.Token$"
+            }
+          ],
+          "display_name": "Test Relative URL with parameters",
+          "method": "GET",
+          "relative_url": "/tasks?limit=3\u0026start=1",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01ANAD8KB5UGQ4Y6EZu4pokE6mbB2FVZq0r"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01BAATMSGCZBH7QdnOZvmn2GQI68wc8iVhk",
+        "name": "HTTP Request",
+        "title": "Test XML output format",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "content_type": "application/xml",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer $activity.definition_activity_01B55GEYHH12C4zvhlIwb1QObi7nyI4iEgV.output.jsonpath_queries.Token$"
+            }
+          ],
+          "display_name": "Test XML output format",
+          "method": "GET",
+          "relative_url": "/tasks?limit=3\u0026start=1",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01ANAD8KB5UGQ4Y6EZu4pokE6mbB2FVZq0r"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01BAAU0SYYEC875KLaIwJQcnmFGQWbcEt9L",
+        "name": "HTTP Request",
+        "title": "Get Targets from External Env",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "continue_on_error_status_code": false,
+          "continue_on_failure": true,
+          "display_name": "Get Targets from External Env",
+          "method": "GET",
+          "relative_url": "/Targets",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01ANAY0M3ENLC6iDLtiv4tsyeM48Ap7sMjl"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01BAAXBWHMD4Y7hBzDnG0xIk68WCSWrvKhp",
+        "name": "HTTP Request",
+        "title": "Test Cookies",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "continue_on_error_status_code": true,
+          "continue_on_failure": true,
+          "cookie": [
+            "$activity.definition_activity_01B6VMLN0T1WX2xLLimnB8MVJBvA1sbYU56.output.cookie[0]$"
+          ],
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer $activity.definition_activity_01B55GEYHH12C4zvhlIwb1QObi7nyI4iEgV.output.jsonpath_queries.Token$"
+            }
+          ],
+          "display_name": "Test Cookies",
+          "method": "GET",
+          "relative_url": "/tasks?limit=3\u0026start=1",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01ANAD8KB5UGQ4Y6EZu4pokE6mbB2FVZq0r"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01BDPS33Y0NQ62mm7Wgk2bHbY2B459at3aX",
+        "name": "Set Variables",
+        "title": "Display list of successfull test cases",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Display list of successfull test cases",
+          "skip_execution": false,
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.output.variable_workflow_01BDPYWWHPJBN6pyY5Tp9wwJ95rkd3GH88G$",
+              "variable_value_new": "$workflow.definition_workflow_01B55EW2V9IZC4LMnlqE0zQ7eyHhaOvvUJH.local.variable_workflow_01BA9ZEMHYEHV3LWYS4FyAU9leLPCDAljJO$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_0191LAUMTIJQG2rLOHF7awzXjXgGbTPQtfs": {
+      "unique_name": "definition_target_0191LAUMTIJQG2rLOHF7awzXjXgGbTPQtfs",
+      "name": "RG UNIX NEW",
+      "title": "RG UNIX NEW",
+      "type": "terminal.unix_linux_endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "bash_shell": "/bin/bash",
+        "default_runtime_user_id": "definition_runtime_user_0191L7DJPZ7LE3hbhUgYvsYLIY35hoIRVP6",
+        "display_name": "RG UNIX NEW",
+        "host": "sjc-cent59-rac1.tidalsoft.local",
+        "port": 22
+      }
+    },
+    "definition_target_01ANAD8KB5UGQ4Y6EZu4pokE6mbB2FVZq0r": {
+      "unique_name": "definition_target_01ANAD8KB5UGQ4Y6EZu4pokE6mbB2FVZq0r",
+      "name": "RG QETest01 Internal",
+      "title": "RG QETest01 Internal",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": true,
+        "display_name": "RG QETest01 Internal",
+        "host": "qetest01.tidalsoft.local",
+        "no_runtime_user": true,
+        "path": "/be-console/api/v1",
+        "port": 34983,
+        "protocol": "https"
+      }
+    },
+    "definition_target_01ANAY0M3ENLC6iDLtiv4tsyeM48Ap7sMjl": {
+      "unique_name": "definition_target_01ANAY0M3ENLC6iDLtiv4tsyeM48Ap7sMjl",
+      "name": "RG External CPO ",
+      "title": "RG External CPO ",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_01ANAXCBSJBOL6BKnNl5bRphHcWg9JweDCT",
+        "disable_certificate_validation": false,
+        "display_name": "RG External CPO ",
+        "host": "cpo-maria-03.tidalsoft.local",
+        "no_runtime_user": false,
+        "path": "/api/v1",
+        "port": 51527,
+        "protocol": "http"
+      }
+    },
+    "definition_target_01BAAPR6GRDSQ6MgV7JNZyqxhX3W7UnGxr9": {
+      "unique_name": "definition_target_01BAAPR6GRDSQ6MgV7JNZyqxhX3W7UnGxr9",
+      "name": "World Clock",
+      "title": "World Clock",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": false,
+        "display_name": "World Clock",
+        "host": "worldtimeapi.org",
+        "ignore_proxy": false,
+        "no_runtime_user": true,
+        "path": "api/timezone",
+        "protocol": "http"
+      }
+    },
+    "definition_target_01GL3E0xdaYZXuqMRV4Hh7u3Q0xvhcQBc": {
+      "unique_name": "definition_target_01GL3E0xdaYZXuqMRV4Hh7u3Q0xvhcQBc",
+      "name": " vCenter Server - aus-65esxvc-01 ",
+      "title": " vCenter Server - aus-65esxvc-01 ",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_01GL392jsVQARIRHOoEdfDPzDJzzwh12H",
+        "disable_certificate_validation": true,
+        "display_name": " vCenter Server - aus-65esxvc-01 ",
+        "host": "10.88.102.41",
+        "no_runtime_user": false,
+        "protocol": "https"
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_0191L7DJPZ7LE3hbhUgYvsYLIY35hoIRVP6": {
+      "unique_name": "definition_runtime_user_0191L7DJPZ7LE3hbhUgYvsYLIY35hoIRVP6",
+      "name": "root NEW",
+      "title": "root NEW",
+      "type": "runtime_user.terminal_password_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "root NEW",
+        "password": "*****",
+        "user": "*****"
+      }
+    },
+    "definition_runtime_user_01ANAXCBSJBOL6BKnNl5bRphHcWg9JweDCT": {
+      "unique_name": "definition_runtime_user_01ANAXCBSJBOL6BKnNl5bRphHcWg9JweDCT",
+      "name": "RG tidalsoft",
+      "title": "RG tidalsoft",
+      "type": "runtime_user.web-service_basic_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "basic_password": "*****",
+        "basic_username": "*****",
+        "display_name": "RG tidalsoft"
+      }
+    },
+    "definition_runtime_user_01GL392jsVQARIRHOoEdfDPzDJzzwh12H": {
+      "unique_name": "definition_runtime_user_01GL392jsVQARIRHOoEdfDPzDJzzwh12H",
+      "name": "aus-65esxvc-01 user",
+      "title": "aus-65esxvc-01 user",
+      "type": "runtime_user.web-service_basic_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "basic_password": "*****",
+        "basic_username": "*****",
+        "display_name": "aus-65esxvc-01 user"
+      }
+    }
+  },
+  "table_types": {
+    "tabletype_0172TK6NRMI8A3W1hJ6bDz2mADkoowSKtUH": {
+      "unique_name": "tabletype_0172TK6NRMI8A3W1hJ6bDz2mADkoowSKtUH",
+      "data_type": "datatype.tabletype",
+      "display_name": "Succeeded Test Cases",
+      "columns": [
+        {
+          "name": "Testcase",
+          "title": "Testcase",
+          "type": "string"
+        }
+      ],
+      "base_type": "datatype",
+      "object_type": "tabletype"
+    },
+    "tabletype_01BA9WKCP5TIE7f6qg46HByzSPpHYZ21Jdw": {
+      "unique_name": "tabletype_01BA9WKCP5TIE7f6qg46HByzSPpHYZ21Jdw",
+      "data_type": "datatype.tabletype",
+      "display_name": "Failed Test Case Table",
+      "columns": [
+        {
+          "name": "TestCase",
+          "title": "TestCase",
+          "type": "string"
+        }
+      ],
+      "base_type": "datatype",
+      "object_type": "tabletype"
+    }
+  }
+}
