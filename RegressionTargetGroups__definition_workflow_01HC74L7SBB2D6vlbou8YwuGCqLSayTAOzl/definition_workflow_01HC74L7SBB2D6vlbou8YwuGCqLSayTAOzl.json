@@ -1,0 +1,1169 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl",
+    "name": "Regression - Target Group Automation",
+    "title": "Regression - Target Group Automation",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "Test Cases Passed",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01HFG5KT3PQ0V3iNRZQ80EMzUlcgfg95LBs",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Input Token",
+          "type": "datatype.string",
+          "is_required": true
+        },
+        "unique_name": "variable_workflow_01HESBT7B30UE4gUbAbhcQmYRuUSsIVhs7d",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Regression - Target Group Automation",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "target_type": "web-service.endpoint",
+        "target_id": "definition_target_01GRPRXQUCM150Yq3NSToUUMddI92Ioa0ED",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01HC7CANAWDXR2KZ5NWKb9XpVuH5dVNlizm",
+        "name": "Group",
+        "title": "Target Creation",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Target Creation",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01HC7H2H6QTAB406wedSIRww8K60uC2w8si",
+            "name": "HTTP Request",
+            "title": "Create Web Target1",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "body": "{\n   \"name\":\"RG target1$workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.start_time$\",\n   \"title\":\"RG target1$workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.start_time$\",\n   \"properties\":{\n      \"disable_certificate_validation\":false,\n      \"ignore_proxy\":false,\n      \"no_runtime_user\":true,\n      \"display_name\":\"RG target1$workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.start_time$\",\n      \"protocol\":\"http\",\n      \"host\":\"google.com\"\n   },\n  \"type\": \"web-service.endpoint\",\n  \"base_type\": \"target\"\n}",
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "custom_headers": [
+                {
+                  "name": "Authentication",
+                  "value": "Bearer $workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.input.variable_workflow_01HESBT7B30UE4gUbAbhcQmYRuUSsIVhs7d$"
+                }
+              ],
+              "display_name": "Create Web Target1",
+              "method": "POST",
+              "relative_url": "be-console/api/v1/targets",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": false,
+                "override_workflow_target_group_criteria": false,
+                "use_workflow_target": true,
+                "use_workflow_target_group": false
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01HC7QLE8YI7L65sTQZlbCF5vHWutKHnxyO",
+            "name": "JSONPath Query",
+            "title": "Extract Target1 ID",
+            "type": "corejava.jsonpathquery",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Extract Target1 ID",
+              "input_json": "$activity.definition_activity_01HC7H2H6QTAB406wedSIRww8K60uC2w8si.output.response_body$",
+              "jsonpath_queries": [
+                {
+                  "jsonpath_query": "$..id",
+                  "jsonpath_query_name": "Target1 ID",
+                  "jsonpath_query_type": "string"
+                },
+                {
+                  "jsonpath_query": "$..schema_id",
+                  "jsonpath_query_name": "Schema ID",
+                  "jsonpath_query_type": "string"
+                }
+              ],
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01HC7R9EDN8RF6YQZzzkx12HzKS9cjTnfHF",
+            "name": "HTTP Request",
+            "title": "Create Web Target2",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "body": "{\n   \"name\":\"RG target2$workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.start_time$\",\n   \"title\":\"RG target2$workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.start_time$\",\n   \"properties\":{\n      \"disable_certificate_validation\":false,\n      \"ignore_proxy\":false,\n      \"no_runtime_user\":true,\n      \"display_name\":\"RG target2$workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.start_time$\",\n      \"protocol\":\"http\",\n      \"host\":\"google.com\"\n   },\n  \"type\": \"web-service.endpoint\",\n  \"base_type\": \"target\"\n}",
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "custom_headers": [
+                {
+                  "name": "Authentication",
+                  "value": "Bearer  $workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.input.variable_workflow_01HESBT7B30UE4gUbAbhcQmYRuUSsIVhs7d$"
+                }
+              ],
+              "display_name": "Create Web Target2",
+              "method": "POST",
+              "relative_url": "be-console/api/v1/targets",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": false,
+                "override_workflow_target_group_criteria": false,
+                "use_workflow_target": true,
+                "use_workflow_target_group": false
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01HC7S0TEALTI0tRDtAlds2HB9WctME9Ob3",
+            "name": "JSONPath Query",
+            "title": "Extract Target2 ID",
+            "type": "corejava.jsonpathquery",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Extract Target2 ID",
+              "input_json": "$activity.definition_activity_01HC7R9EDN8RF6YQZzzkx12HzKS9cjTnfHF.output.response_body$",
+              "jsonpath_queries": [
+                {
+                  "jsonpath_query": "$..id",
+                  "jsonpath_query_name": "Target2 ID",
+                  "jsonpath_query_type": "string"
+                }
+              ],
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01HC8ED0UCHMV2qwyseL1Iq9TAOu72BHRsO",
+            "name": "HTTP Request",
+            "title": "Create Kafka target",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "body": "{\n   \"name\":\"RG delete Kafka$workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.start_time$\",\n   \"title\":\"RG delete Kafka$workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.start_time$\",\n\"properties\":{\n      \"disable_certificate_validation\":true,\n      \"no_runtime_user\":true,\n      \"port\":9092,\n      \"ssl_enable\":false,\n      \"display_name\":\"RG delete Kafka$workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.start_time$\",\n      \"host\":\"10.88.38.124\"\n   },\n   \"base_type\":\"target\",\n   \"type\":\"kafka.endpoint\"\n}",
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "display_name": "Create Kafka target",
+              "method": "POST",
+              "relative_url": "be-console/api/v1/targets",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": false,
+                "override_workflow_target_group_criteria": false,
+                "use_workflow_target": true,
+                "use_workflow_target_group": false
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01HC8KA6EZXY91l5IXRk70DI2fGcyE2j4LJ",
+            "name": "JSONPath Query",
+            "title": "Extract Kafka Target ID",
+            "type": "corejava.jsonpathquery",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Extract Kafka Target ID",
+              "input_json": "$activity.definition_activity_01HC8ED0UCHMV2qwyseL1Iq9TAOu72BHRsO.output.response_body$",
+              "jsonpath_queries": [
+                {
+                  "jsonpath_query": "$..id",
+                  "jsonpath_query_name": "Target2 ID",
+                  "jsonpath_query_type": "string"
+                },
+                {
+                  "jsonpath_query": "$..schema_id",
+                  "jsonpath_query_name": "Kafka Schema ID",
+                  "jsonpath_query_type": "string"
+                }
+              ],
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01HC7CKCN6Q2Y5PNlYvsTOucXXQ5kZETToT",
+        "name": "Group",
+        "title": "Target Group Creation - With Conditions",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Target Group Creation - With Conditions",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01HC7SSLFHKW15vM55JUagSD5jn3mnye4tx",
+            "name": "HTTP Request",
+            "title": "Create Target Group with Web targets",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "body": "{\n   \"title\":\"RG TG1$workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.start_time$\",\n   \"targets\":[\n      {\n         \"include_all_targets\":false,\n         \"view_target_type\":\"$activity.definition_activity_01HC7QLE8YI7L65sTQZlbCF5vHWutKHnxyO.output.jsonpath_queries.Schema ID$\",\n         \"criteria\":[\n            {\n               \"operator\":\"mw\",\n               \"left_operand\":\"$input.display_name$\",\n               \"right_operand\":\"RG Target*\"\n            }\n         ]\n      }\n   ],\n   \"name\":\"RG TG1$workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.start_time$\",\n  \"type\": \"generic.target_group\",\n  \"base_type\": \"target_group\"\n}",
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "display_name": "Create Target Group with Web targets",
+              "method": "POST",
+              "relative_url": "be-console/api/v1/target_groups",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": false,
+                "override_workflow_target_group_criteria": false,
+                "use_workflow_target": true,
+                "use_workflow_target_group": false
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01HC830HEXJMK2gKvRH62WTgyxcicLLaw3e",
+            "name": "JSONPath Query",
+            "title": "Extract Target Group ID",
+            "type": "corejava.jsonpathquery",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Extract Target Group ID",
+              "input_json": "$activity.definition_activity_01HC7SSLFHKW15vM55JUagSD5jn3mnye4tx.output.response_body$",
+              "jsonpath_queries": [
+                {
+                  "jsonpath_query": "$..id",
+                  "jsonpath_query_name": "Target Group  ID",
+                  "jsonpath_query_type": "string"
+                }
+              ],
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01HC7DTLE9C1O0kxAb5hlUQ6EogLNMZgNZt",
+        "name": "Group",
+        "title": "Target Group Updation - Updating Existing Target Type ",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Target Group Updation - Updating Existing Target Type ",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01HC80X8CDP43496RjTqABtKRP4NYdg69P5",
+            "name": "HTTP Request",
+            "title": "Update Target Group with specific Web targets",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "body": "\n{\n   \"id\":\"$activity.definition_activity_01HC830HEXJMK2gKvRH62WTgyxcicLLaw3e.output.jsonpath_queries.Target Group  ID$\",\n   \"name\":\"RG TG1$workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.start_time$\",\n   \"title\":\"RG TG1$workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.start_time$\",\n   \"type\":\"generic.target_group\",\n   \"base_type\":\"target_group\",\n   \"targets\":[\n      {\n         \"view_target_type\":\"$activity.definition_activity_01HC7QLE8YI7L65sTQZlbCF5vHWutKHnxyO.output.jsonpath_queries.Schema ID$]\",\n         \"criteria\":[\n            {\n               \"left_operand\":\"$input.display_name$\",\n               \"operator\":\"mw\",\n               \"right_operand\":\"RG Target*\"\n            }\n         ],\n         \"include_all_targets\":false,\n         \"selected_target_ids\":[\n            \"$activity.Extract Target1 ID.output.Jsonpath Queries.Target1 ID$\"\n         ]\n      }\n   ]\n}",
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "display_name": "Update Target Group with specific Web targets",
+              "method": "PUT",
+              "relative_url": "be-console/api/v1/target_groups/$activity.definition_activity_01HC830HEXJMK2gKvRH62WTgyxcicLLaw3e.output.jsonpath_queries.Target Group  ID$",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": false,
+                "override_workflow_target_group_criteria": false,
+                "use_workflow_target": true,
+                "use_workflow_target_group": false
+              }
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01HC7DFM6ZOPE1cBMq3Hny24he4aqfqHZGo",
+        "name": "Group",
+        "title": "Target Group Updation - Adding New Target Type without Condition",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Target Group Updation - Adding New Target Type without Condition",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01HEQUMJ31Z035STBFLzszoFZgGiRpzGhLo",
+            "name": "HTTP Request",
+            "title": "Update Target Group - Adding another Target Type",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "body": "{\n   \"id\":\"01HC7TZ8XK1I33SbZScNLUzSijzgbht8FpT\",\n    \"name\":\"RG TG1$workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.start_time$\",\n   \"title\":\"RG TG1$workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.start_time$\",\n   \"type\":\"generic.target_group\",\n   \"base_type\":\"target_group\",\n   \"targets\":[\n      {\n         \"view_target_type\":\"$activity.definition_activity_01HC7QLE8YI7L65sTQZlbCF5vHWutKHnxyO.output.jsonpath_queries.Schema ID$\",\n         \"selected_target_ids\":[\n            \"$activity.definition_activity_01HC7QLE8YI7L65sTQZlbCF5vHWutKHnxyO.output.jsonpath_queries.Target1 ID$\"\n         ],\n         \"criteria\":[\n            {\n               \"left_operand\":\"$input.display_name$\",\n               \"operator\":\"mw\",\n               \"right_operand\":\"RG Target*\"\n            }\n         ]\n      },\n      {\n         \"include_all_targets\":true,\n         \"view_target_type\":\"$activity.definition_activity_01HC8KA6EZXY91l5IXRk70DI2fGcyE2j4LJ.output.jsonpath_queries.Kafka Schema ID$\"\n      }\n   ]\n}",
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "display_name": "Update Target Group - Adding another Target Type",
+              "method": "PUT",
+              "relative_url": "be-console/api/v1/target_groups/$activity.definition_activity_01HC830HEXJMK2gKvRH62WTgyxcicLLaw3e.output.jsonpath_queries.Target Group  ID$",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": false,
+                "override_workflow_target_group_criteria": false,
+                "use_workflow_target": true,
+                "use_workflow_target_group": false
+              }
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01HES7LJ2RX0C2ZohPDUcJPysq4I1v2GIgR",
+        "name": "Group",
+        "title": "Creating Test Workflow and Add Target Group",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Creating Test Workflow and Add Target Group",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01HES7SEDHMO90MKEW0Qg2YernRmGVua0gd",
+            "name": "HTTP Request",
+            "title": "Create Workflow",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "body": "{\n  \"name\": \"Test Workflow $workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.start_time$\",\n  \"title\": \"Test Wokrflow $workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.start_time$\",\n  \"type\": \"generic.workflow\",\n  \"base_type\": \"workflow\",\n  \"properties\": {\n    \"display_name\": \"Test Workflow $workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.start_time$\",\n    \"atomic\": {\n      \"is_atomic\": false\n    },\n    \"delete_workflow_instance\": false,\n    \"runtime_user\": {\n      \"override_target_runtime_user\": false,\n      \"specify_on_workflow_start\": false,\n      \"target_default\": true\n    },\n    \"target\": {\n      \"execute_on_target_group\": false,\n      \"execute_on_workflow_target\": false,\n      \"no_target\": true,\n      \"specify_on_workflow_start\": false\n    }\n  }\n}",
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "custom_headers": [
+                {
+                  "name": "Authentication",
+                  "value": "Bearer  $workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.input.variable_workflow_01HESBT7B30UE4gUbAbhcQmYRuUSsIVhs7d$"
+                }
+              ],
+              "display_name": "Create Workflow",
+              "method": "GET",
+              "relative_url": "be-console/api/v1/workflows",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": false,
+                "override_workflow_target_group_criteria": false,
+                "use_workflow_target": true,
+                "use_workflow_target_group": false
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01HESA08SYXIB1FREQziC9pZRmlpurDTM37",
+            "name": "JSONPath Query",
+            "title": "Extract Workflow ID",
+            "type": "corejava.jsonpathquery",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Extract Workflow ID",
+              "input_json": "$activity.definition_activity_01HES7SEDHMO90MKEW0Qg2YernRmGVua0gd.output.response_body$",
+              "jsonpath_queries": [
+                {
+                  "jsonpath_query": "$..id",
+                  "jsonpath_query_name": "Test Workflow ID",
+                  "jsonpath_query_type": "string"
+                }
+              ],
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01HF05W5MVEXK2mWUN6FcuWytRi6Urdkhk0",
+            "name": "HTTP Request",
+            "title": "Add action to workflow",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "body": "{\n  \"previous_action\": {\n    \"id\": \"$activity.definition_activity_01HESA08SYXIB1FREQziC9pZRmlpurDTM37.output.jsonpath_queries.Test Workflow ID$\",\n    \"type\": \"generic.workflow\",\n    \"base_type\": \"workflow\"\n  },\n  \"action\": {\n    \"type\": \"core.string2upper\",\n    \"base_type\": \"activity\",\n    \"name\": \"To Upper\",\n    \"properties\": {\n      \"continue_on_failure\": false,\n      \"skip_execution\": false,\n      \"display_name\": \"To Upper\",\n      \"source\": \"automation\"\n    },\n    \"title\": \"To Upper\"\n  }\n}",
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "custom_headers": [
+                {
+                  "name": "Authentication",
+                  "value": "Bearer  $workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.input.variable_workflow_01HESBT7B30UE4gUbAbhcQmYRuUSsIVhs7d$"
+                }
+              ],
+              "display_name": "Add action to workflow",
+              "method": "POST",
+              "relative_url": "be-console/api/v1/workflows/$activity.definition_activity_01HESA08SYXIB1FREQziC9pZRmlpurDTM37.output.jsonpath_queries.Test Workflow ID$/actions",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": false,
+                "override_workflow_target_group_criteria": false,
+                "use_workflow_target": true,
+                "use_workflow_target_group": false
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01HF0AIGXHXTR6NwvewLiAFC4WVletzDAVL",
+            "name": "HTTP Request",
+            "title": "Add Target Group to workflow",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "body": "{\n   \"id\":\"$activity.definition_activity_01HESA08SYXIB1FREQziC9pZRmlpurDTM37.output.jsonpath_queries.Test Workflow ID$\",\n   \"type\":\"generic.workflow\",\n   \"base_type\":\"workflow\",\n   \"name\":\"Test Workflow $workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.start_time$\",\n   \"title\":\"Test Workflow $workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.start_time$\",\n   \"valid\":true,\n   \"properties\":{\n      \"atomic\":{\n         \"is_atomic\":false\n      },\n      \"delete_workflow_instance\":false,\n      \"runtime_user\":{\n         \"override_target_runtime_user\":false,\n         \"specify_on_workflow_start\":false,\n         \"target_default\":true\n      },\n      \"target\":{\n         \"execute_on_target_group\":true,\n         \"target_group\":{\n            \"run_on_all_targets\":true,\n            \"target_group_id\":\"$activity.definition_activity_01HC830HEXJMK2gKvRH62WTgyxcicLLaw3e.output.jsonpath_queries.Target Group  ID$\",\n            \"selected_target_types\":[\n               \"$activity.definition_activity_01HC7QLE8YI7L65sTQZlbCF5vHWutKHnxyO.output.jsonpath_queries.Schema ID$\"\n            ]\n         }\n      },\n      \"display_name\":\"Test Workflow $activity.definition_activity_01HESA08SYXIB1FREQziC9pZRmlpurDTM37.output.jsonpath_queries.Test Workflow ID$\"\n   },\n   \"categories\":[\n\n   ],\n   \"variables\":null\n}",
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "custom_headers": [
+                {
+                  "name": "Authentication",
+                  "value": "Bearer  $workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.input.variable_workflow_01HESBT7B30UE4gUbAbhcQmYRuUSsIVhs7d$"
+                }
+              ],
+              "display_name": "Add Target Group to workflow",
+              "method": "PUT",
+              "relative_url": "be-console/api/v1/workflows/$activity.definition_activity_01HESA08SYXIB1FREQziC9pZRmlpurDTM37.output.jsonpath_queries.Test Workflow ID$",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": false,
+                "override_workflow_target_group_criteria": false,
+                "use_workflow_target": true,
+                "use_workflow_target_group": false
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01HF07W7037N96oHgrwLH72nHPRPsvdpYYN",
+            "name": "HTTP Request",
+            "title": "Validate Workflow",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "custom_headers": [
+                {
+                  "name": "Authentication",
+                  "value": "Bearer  $workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.input.variable_workflow_01HESBT7B30UE4gUbAbhcQmYRuUSsIVhs7d$"
+                }
+              ],
+              "display_name": "Validate Workflow",
+              "method": "POST",
+              "relative_url": "be-console/api/v1/workflows/$activity.definition_activity_01HESA08SYXIB1FREQziC9pZRmlpurDTM37.output.jsonpath_queries.Test Workflow ID$/validate",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": false,
+                "override_workflow_target_group_criteria": false,
+                "use_workflow_target": true,
+                "use_workflow_target_group": false
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01HF0EM3Z3YN94tU0dQ2s7TeVpZh6gaqdL5",
+            "name": "HTTP Request",
+            "title": "Run Workflow",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "custom_headers": [
+                {
+                  "name": "Authentication",
+                  "value": "Bearer  $workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.input.variable_workflow_01HESBT7B30UE4gUbAbhcQmYRuUSsIVhs7d$"
+                }
+              ],
+              "display_name": "Run Workflow",
+              "method": "POST",
+              "relative_url": "be-console/api/v1/workflows/ui/start?workflow_id=$activity.definition_activity_01HESA08SYXIB1FREQziC9pZRmlpurDTM37.output.jsonpath_queries.Test Workflow ID$",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": false,
+                "override_workflow_target_group_criteria": false,
+                "use_workflow_target": true,
+                "use_workflow_target_group": false
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01HF0FCPKV7OB1FE2UjPcFhF6nlY9034kbY",
+            "name": "JSONPath Query",
+            "title": "Extract Instance ID",
+            "type": "corejava.jsonpathquery",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Extract Instance ID",
+              "input_json": "$activity.definition_activity_01HF0EM3Z3YN94tU0dQ2s7TeVpZh6gaqdL5.output.response_body$",
+              "jsonpath_queries": [
+                {
+                  "jsonpath_query": "$..id",
+                  "jsonpath_query_name": "Instance  ID",
+                  "jsonpath_query_type": "string"
+                }
+              ],
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01HF0G225DDPP37VOax6bJWISqXH7Byyg9A",
+            "name": "Sleep",
+            "title": "Sleep",
+            "type": "core.sleep",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Sleep",
+              "skip_execution": false,
+              "sleep_interval": 5
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01HF0H1PAYFBJ1OeJ82D8onyxjTImeiWSO9",
+            "name": "HTTP Request",
+            "title": "Get Instance Details",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "custom_headers": [
+                {
+                  "name": "Authentication",
+                  "value": "Bearer  $workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.input.variable_workflow_01HESBT7B30UE4gUbAbhcQmYRuUSsIVhs7d$"
+                }
+              ],
+              "display_name": "Get Instance Details",
+              "method": "GET",
+              "relative_url": "be-console/api/v1/instances/$activity.definition_activity_01HF0FCPKV7OB1FE2UjPcFhF6nlY9034kbY.output.jsonpath_queries.Instance  ID$?detailed=true",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": false,
+                "override_workflow_target_group_criteria": false,
+                "use_workflow_target": true,
+                "use_workflow_target_group": false
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01HF0GDMFYZZI5FgeXk8gaKKbaWUgFk5TUA",
+            "name": "JSONPath Query",
+            "title": "Extract Instance Status",
+            "type": "corejava.jsonpathquery",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Extract Instance Status",
+              "input_json": "$activity.definition_activity_01HF0H1PAYFBJ1OeJ82D8onyxjTImeiWSO9.output.response_body$",
+              "jsonpath_queries": [
+                {
+                  "jsonpath_query": "$.status.state",
+                  "jsonpath_query_name": "Instance  ID",
+                  "jsonpath_query_type": "string"
+                }
+              ],
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01HC7FIIUBTEA2bCwvr3Z3lCEfLG8SOTTgp",
+        "name": "Group",
+        "title": "Adding a New Target to TG dynamically",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Adding a New Target to TG dynamically",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01HC7FQTIDBC20I0hWVJeu7MGwZKYaJthUi",
+        "name": "Group",
+        "title": "Rerunning Workflow",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Rerunning Workflow",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01HC7FX9JTHVZ2KOtDOvq7EfqeWSfjLpSNM",
+        "name": "Group",
+        "title": "Delete Workflow",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Delete Workflow",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01HFFLN66SFZ55B7XNMEdxyhuEbXjnzgJkD",
+            "name": "HTTP Request",
+            "title": "Delete Workflow",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "custom_headers": [
+                {
+                  "name": "Authentication",
+                  "value": "Bearer  $workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.input.variable_workflow_01HESBT7B30UE4gUbAbhcQmYRuUSsIVhs7d$"
+                }
+              ],
+              "display_name": "Delete Workflow",
+              "method": "DELETE",
+              "relative_url": "be-console/api/v1/workflows/$activity.definition_activity_01HESA08SYXIB1FREQziC9pZRmlpurDTM37.output.jsonpath_queries.Test Workflow ID$",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": false,
+                "override_workflow_target_group_criteria": false,
+                "use_workflow_target": true,
+                "use_workflow_target_group": false
+              }
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01HC7G128TB1M5VIrqDCcWaRk4tFGhXRdDr",
+        "name": "Group",
+        "title": "Delete Target Group",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Delete Target Group",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01HFFMEZHRM2X15uLSnOzwQnd0kfDZ2XPXH",
+            "name": "HTTP Request",
+            "title": "Delete Target Group",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "custom_headers": [
+                {
+                  "name": "Authentication",
+                  "value": "Bearer  $workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.input.variable_workflow_01HESBT7B30UE4gUbAbhcQmYRuUSsIVhs7d$"
+                }
+              ],
+              "display_name": "Delete Target Group",
+              "method": "DELETE",
+              "relative_url": "be-console/api/v1/target_groups/$activity.definition_activity_01HC830HEXJMK2gKvRH62WTgyxcicLLaw3e.output.jsonpath_queries.Target Group  ID$",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": false,
+                "override_workflow_target_group_criteria": false,
+                "use_workflow_target": true,
+                "use_workflow_target_group": false
+              }
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01HC7GUH9E0BO6PicMjNeWxKB2NSQCf092X",
+        "name": "Group",
+        "title": "Delete Targets",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Delete Targets",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01HFFOE7LEJNF64BRPuL8nB83WlZuYOJnUo",
+            "name": "HTTP Request",
+            "title": "Delete Web Target1",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "custom_headers": [
+                {
+                  "name": "Authentication",
+                  "value": "Bearer  $workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.input.variable_workflow_01HESBT7B30UE4gUbAbhcQmYRuUSsIVhs7d$"
+                }
+              ],
+              "display_name": "Delete Web Target1",
+              "method": "DELETE",
+              "relative_url": "be-console/api/v1/targets/$activity.definition_activity_01HC7QLE8YI7L65sTQZlbCF5vHWutKHnxyO.output.jsonpath_queries.Target1 ID$",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": false,
+                "override_workflow_target_group_criteria": false,
+                "use_workflow_target": true,
+                "use_workflow_target_group": false
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01HFFP937GA8Q6Bpp5se1kusNojft30HOf9",
+            "name": "HTTP Request",
+            "title": "Delete Web Target2",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "custom_headers": [
+                {
+                  "name": "Authentication",
+                  "value": "Bearer  $workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.input.variable_workflow_01HESBT7B30UE4gUbAbhcQmYRuUSsIVhs7d$"
+                }
+              ],
+              "display_name": "Delete Web Target2",
+              "method": "DELETE",
+              "relative_url": "be-console/api/v1/targets/$activity.definition_activity_01HC7S0TEALTI0tRDtAlds2HB9WctME9Ob3.output.jsonpath_queries.Target2 ID$",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": false,
+                "override_workflow_target_group_criteria": false,
+                "use_workflow_target": true,
+                "use_workflow_target_group": false
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01HFFPLTOHPBR58c1FyRz5XIJFtRUKkoO2Z",
+            "name": "HTTP Request",
+            "title": "Delete Kafka Target",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "custom_headers": [
+                {
+                  "name": "Authentication",
+                  "value": "Bearer  $workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.input.variable_workflow_01HESBT7B30UE4gUbAbhcQmYRuUSsIVhs7d$"
+                }
+              ],
+              "display_name": "Delete Kafka Target",
+              "method": "DELETE",
+              "relative_url": "be-console/api/v1/targets/$activity.definition_activity_01HC8KA6EZXY91l5IXRk70DI2fGcyE2j4LJ.output.jsonpath_queries.Target2 ID$",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": false,
+                "override_workflow_target_group_criteria": false,
+                "use_workflow_target": true,
+                "use_workflow_target_group": false
+              }
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01HF0IIJEKNUY5qUTYJi3Raj5fkZetxdT8V",
+        "name": "Condition Block",
+        "title": "Verify Test Status",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Verify Test Status",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01HF0IITCT8FP1Blfjn3NOur41qUgARjS1B",
+            "name": "Condition Branch",
+            "title": "All Test Cases Passed?",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": {
+                  "left_operand": {
+                    "left_operand": {
+                      "left_operand": {
+                        "left_operand": {
+                          "left_operand": {
+                            "left_operand": {
+                              "left_operand": "$activity.definition_activity_01HC7CANAWDXR2KZ5NWKb9XpVuH5dVNlizm.output.succeeded$",
+                              "operator": "eq",
+                              "right_operand": true
+                            },
+                            "operator": "and",
+                            "right_operand": {
+                              "left_operand": "$activity.definition_activity_01HC7CKCN6Q2Y5PNlYvsTOucXXQ5kZETToT.output.succeeded$",
+                              "operator": "eq",
+                              "right_operand": true
+                            }
+                          },
+                          "operator": "and",
+                          "right_operand": {
+                            "left_operand": "$activity.definition_activity_01HC7DTLE9C1O0kxAb5hlUQ6EogLNMZgNZt.output.succeeded$",
+                            "operator": "eq",
+                            "right_operand": true
+                          }
+                        },
+                        "operator": "and",
+                        "right_operand": {
+                          "left_operand": "$activity.definition_activity_01HC7DFM6ZOPE1cBMq3Hny24he4aqfqHZGo.output.succeeded$",
+                          "operator": "eq",
+                          "right_operand": true
+                        }
+                      },
+                      "operator": "and",
+                      "right_operand": {
+                        "left_operand": "$activity.definition_activity_01HES7LJ2RX0C2ZohPDUcJPysq4I1v2GIgR.output.succeeded$",
+                        "operator": "eq",
+                        "right_operand": true
+                      }
+                    },
+                    "operator": "and",
+                    "right_operand": {
+                      "left_operand": "$activity.definition_activity_01HC7FIIUBTEA2bCwvr3Z3lCEfLG8SOTTgp.output.succeeded$",
+                      "operator": "eq",
+                      "right_operand": true
+                    }
+                  },
+                  "operator": "and",
+                  "right_operand": {
+                    "left_operand": "$activity.definition_activity_01HC7FQTIDBC20I0hWVJeu7MGwZKYaJthUi.output.succeeded$",
+                    "operator": "eq",
+                    "right_operand": "$activity.definition_activity_01HC7FX9JTHVZ2KOtDOvq7EfqeWSfjLpSNM.output.succeeded$"
+                  }
+                },
+                "operator": "and",
+                "right_operand": {
+                  "left_operand": "$activity.definition_activity_01HC7G128TB1M5VIrqDCcWaRk4tFGhXRdDr.output.succeeded$",
+                  "operator": "eq",
+                  "right_operand": true
+                }
+              },
+              "continue_on_failure": false,
+              "display_name": "All Test Cases Passed?",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01HFG5UMOL6MO5PUP2N9jMjz2NmDUNb12Ay",
+                "name": "Set Variables",
+                "title": "Set Variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set Variables",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.variable_workflow_01HFG5KT3PQ0V3iNRZQ80EMzUlcgfg95LBs$",
+                      "variable_value_new": "All Test Cases Passed - 100%"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01HFG4NZMENNS3Axymrx86nAbyo4J6pNzsw",
+            "name": "Condition Branch",
+            "title": "Any Test Cases failed?",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": {
+                  "left_operand": {
+                    "left_operand": {
+                      "left_operand": {
+                        "left_operand": {
+                          "left_operand": {
+                            "left_operand": {
+                              "left_operand": "$activity.definition_activity_01HC7CANAWDXR2KZ5NWKb9XpVuH5dVNlizm.output.succeeded$",
+                              "operator": "eq",
+                              "right_operand": false
+                            },
+                            "operator": "and",
+                            "right_operand": {
+                              "left_operand": "$activity.definition_activity_01HC7CKCN6Q2Y5PNlYvsTOucXXQ5kZETToT.output.succeeded$",
+                              "operator": "eq",
+                              "right_operand": true
+                            }
+                          },
+                          "operator": "and",
+                          "right_operand": {
+                            "left_operand": "$activity.definition_activity_01HC7DTLE9C1O0kxAb5hlUQ6EogLNMZgNZt.output.succeeded$",
+                            "operator": "eq",
+                            "right_operand": true
+                          }
+                        },
+                        "operator": "and",
+                        "right_operand": {
+                          "left_operand": "$activity.definition_activity_01HC7DFM6ZOPE1cBMq3Hny24he4aqfqHZGo.output.succeeded$",
+                          "operator": "eq",
+                          "right_operand": true
+                        }
+                      },
+                      "operator": "and",
+                      "right_operand": {
+                        "left_operand": "$activity.definition_activity_01HES7LJ2RX0C2ZohPDUcJPysq4I1v2GIgR.output.succeeded$",
+                        "operator": "eq",
+                        "right_operand": true
+                      }
+                    },
+                    "operator": "and",
+                    "right_operand": {
+                      "left_operand": "$activity.definition_activity_01HC7FIIUBTEA2bCwvr3Z3lCEfLG8SOTTgp.output.succeeded$",
+                      "operator": "eq",
+                      "right_operand": true
+                    }
+                  },
+                  "operator": "and",
+                  "right_operand": {
+                    "left_operand": "$activity.definition_activity_01HC7FQTIDBC20I0hWVJeu7MGwZKYaJthUi.output.succeeded$",
+                    "operator": "eq",
+                    "right_operand": "$activity.definition_activity_01HC7FX9JTHVZ2KOtDOvq7EfqeWSfjLpSNM.output.succeeded$"
+                  }
+                },
+                "operator": "and",
+                "right_operand": {
+                  "left_operand": "$activity.definition_activity_01HC7G128TB1M5VIrqDCcWaRk4tFGhXRdDr.output.succeeded$",
+                  "operator": "eq",
+                  "right_operand": true
+                }
+              },
+              "continue_on_failure": false,
+              "display_name": "Any Test Cases failed?",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01HFG75MA0HQ95HX2fsGO0tc91LZJ7Oba5A",
+                "name": "Set Variables",
+                "title": "Set Variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set Variables",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01HC74L7SBB2D6vlbou8YwuGCqLSayTAOzl.output.variable_workflow_01HFG5KT3PQ0V3iNRZQ80EMzUlcgfg95LBs$",
+                      "variable_value_new": "All Test Cases Passed - 100%"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_01GRPRXQUCM150Yq3NSToUUMddI92Ioa0ED": {
+      "unique_name": "definition_target_01GRPRXQUCM150Yq3NSToUUMddI92Ioa0ED",
+      "name": "RG HTTP AO Qetest01",
+      "title": "RG HTTP AO Qetest01",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": true,
+        "display_name": "RG HTTP AO Qetest01",
+        "host": "ao-qetest01.tidalsoft.local",
+        "ignore_proxy": true,
+        "no_runtime_user": true,
+        "port": 31653,
+        "protocol": "https"
+      }
+    }
+  }
+}
